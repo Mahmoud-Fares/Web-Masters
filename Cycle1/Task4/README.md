@@ -17,10 +17,11 @@ Modern, responsive blog template built with Bootstrap 5 and CSS custom propertie
 
 ## Structure
 
-project/
+```
 ├── index.html # Main HTML file
 ├── style.css # Styles with CSS variables and nesting
 └── README.md # This file
+```
 
 ## Browser Support
 
