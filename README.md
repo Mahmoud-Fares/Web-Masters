@@ -11,7 +11,8 @@ The internship is structured into 4 cycles, with each cycle containing 4 distinc
 ## Repository Structure
 
 Each branch is a task for a specific cycle and the main branch has the final code for all tasks.
-/
+
+```
 ├── Cycle1/
 │ ├── Task1/
 │ ├── Task2/
@@ -32,6 +33,7 @@ Each branch is a task for a specific cycle and the main branch has the final cod
 │ ├── Task2/
 │ ├── Task3/
 │ └── Task4/
+```
 
 ## Getting Started
 
@@ -49,10 +51,10 @@ Each branch is a task for a specific cycle and the main branch has the final cod
 
 ### Cycle 1:
 
--  [✅] Task 1: Landing Page
--  [✅] Task 2: Image Gallery with vanilla JS
+-  [✅] Task 1: Landing Page - [Live Demo](https://web-masters-landing-page.netlify.app/)
+-  [✅] Task 2: Image Gallery with vanilla JS - [Live Demo](https://web-masters-image-gallery.netlify.app/)
 -  [✅] Task 3: HTML, CSS Quiz
--  [✅] Task 4: Refactoring Code
+-  [✅] Task 4: Refactoring Code - [Live Demo](https://web-masters-code-refactor.netlify.app/)
 
 ### Cycle 2:
 
