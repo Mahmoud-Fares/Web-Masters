@@ -1,0 +1,146 @@
+/* Normalize */
+:root {
+   /* Colors */
+   --color-primary: #3cab90;
+   --color-primary-dark: #2b8a6d;
+   --color-secondary: #d9d9d9;
+   --color-muted: #475467;
+   --color-accent: #ffbb1c;
+   --color-accent-dark: #f29d0c;
+   --color-dark: #283646;
+   --color-light-section: #f5fbf9;
+
+   --color-text: #101828;
+
+   /* Typography */
+   --font-size-hero: clamp(1.75rem, 2vw + 1rem, 3rem);
+
+   --font-h2: clamp(1.5rem, 2vw + 1rem, 2rem);
+   --font-h3: clamp(1.125rem, 1.6vw + 0.75rem, 1.5rem);
+
+   --font-p-lg: clamp(1rem, 1.5vw + 0.5rem, 1.25rem);
+   --font-p-md: clamp(0.9rem, 1.4vw + 0.4rem, 1.125rem);
+   --font-p-sm: clamp(0.875rem, 1.3vw + 0.3rem, 1rem);
+
+   /* Font Weight */
+   --font-w-medium: 500;
+   --font-w-semi-bold: 600;
+   --font-w-bold: 700;
+
+   /* Spacing */
+   --spacing-sm: 0.5em;
+   --spacing-md: 1em;
+   --spacing-lg: 1.5em;
+   --spacing-xl: 2em;
+   --spacing-2xl: 3em;
+
+   --spacing-section-mobile: 3em;
+   --spacing-section: 5em;
+
+   --text-max-width: 670px;
+
+   /* Border Radius */
+   --border-radius: 12px;
+   --border-rounded: 109px;
+
+   /* Shadows */
+   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+   /* transition */
+   --transition: all 0.3s ease-in-out;
+}
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+html {
+   scroll-behavior: smooth;
+}
+body {
+   font-family: "Inter", sans-serif;
+   line-height: 1.6;
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+
+main {
+   flex: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-weight: var(--font-w-semi-bold);
+   color: var(--color-text);
+}
+h2 {
+   font-size: var(--font-h2);
+}
+h3 {
+   font-size: var(--font-h3);
+}
+
+p {
+   font-size: var(--font-p-md);
+   color: var(--color-muted);
+}
+
+ul {
+   list-style: none;
+}
+
+a {
+   display: inline-block;
+   text-decoration: none;
+   color: white;
+}
+
+/* Utilities */
+section,
+footer {
+   background-color: var(--color-light-section);
+   padding-block: var(--spacing-section-mobile);
+}
+
+.container {
+   width: 100%;
+   max-width: 1200px;
+   padding-inline: var(--spacing-md);
+   margin-inline: auto;
+}
+
+.grid {
+   display: grid;
+   gap: var(--spacing-md);
+}
+
+/* sm: */
+@media (min-width: 640px) {
+   .grid {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+/* md: */
+@media (min-width: 768px) {
+   section,
+   footer {
+      padding-block: var(--spacing-section);
+   }
+
+   .container {
+      padding-inline: var(--spacing-lg);
+   }
+
+   .grid {
+      grid-template-columns: repeat(3, 1fr);
+   }
+}
