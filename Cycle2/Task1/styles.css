@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+p {
+   @apply text-p text-muted;
+}
+section,
+footer {
+   @apply py-12 lg:py-20;
+}
+.container {
+   @apply px-6;
+}
+
+.primary-btn {
+   @apply block px-10 py-3 font-semibold text-p-lg bg-primary text-white text-center hover:bg-white hover:shadow-md hover:text-primary-dark border border-transparent hover:border-primary smooth-transition rounded-sm;
+}
+
+.active-navLink {
+   @apply text-primary-dark font-semibold border-primary;
+}
+
+.smooth-transition {
+   @apply transition-smooth duration-smooth ease-smooth;
+}
+
+#nav-toggle:checked ~ div div:first-child {
+   opacity: 0.5;
+   pointer-events: auto;
+}
+
+#nav-toggle:checked ~ div div:last-child {
+   transform: translateX(0);
+}

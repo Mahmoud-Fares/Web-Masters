@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>TodoList</title>
+      <link
+         href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
+         rel="stylesheet"
+      />
+      <link
+         rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+         integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+         crossorigin="anonymous"
+      />
+      <link rel="stylesheet" href="./style.css" />
+   </head>
+   <body>
+      <header>
+         <h1>Todo List</h1>
+      </header>
+
+      <div
+         class="notifications"
+         id="notifications"
+         role="alert"
+         aria-live="polite"
+      ></div>
+
+      <form aria-label="Add todo form">
+         <input
+            type="text"
+            class="todo-input"
+            data-todo-input
+            aria-label="Enter a new task"
+            placeholder="Enter a new task"
+         />
+         <div class="form-controls">
+            <button class="todo-button" type="submit" aria-label="Add task">
+               <i class="fas fa-plus-square" aria-hidden="true"></i>
+            </button>
+
+            <div class="select">
+               <select
+                  name="todos"
+                  class="filter-todo"
+                  data-todo-filter
+                  aria-label="Filter tasks"
+               >
+                  <option value="all">All</option>
+                  <option value="completed">Completed</option>
+                  <option value="uncompleted">Uncompleted</option>
+               </select>
+            </div>
+         </div>
+         <button type="button" data-todo-reset class="reset-btn">
+            Reset Todos
+         </button>
+      </form>
+
+      <section class="todo-container">
+         <ul
+            class="todo-list"
+            data-todo-list
+            role="list"
+            aria-label="Todo list"
+         ></ul>
+      </section>
+
+      <script src="./scripts/app.js" type="module"></script>
+   </body>
+</html>
