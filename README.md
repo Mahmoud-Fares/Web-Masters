@@ -87,7 +87,7 @@ The internship is structured into 4 cycles, with each cycle containing 4 distinc
 | ------ | ------ | --------------------------- | ------------------------------------------------------------ |
 | Task 1 | ✅     | Landing Page (Tailwind)     | [View Demo](https://web-masters-landing-page-2.netlify.app/) |
 | Task 2 | ✅     | Todo App (Vanilla JS - OOP) | [View Demo](https://web-masters-todo-list.netlify.app/)      |
-| Task 3 | 🔄     | Quiz App (Vanilla JS - OOP) | Coming Soon                                                  |
+| Task 3 | ✅     | Quiz App (Vanilla JS - OOP) | [View Demo](https://web-masters-quiz-app.netlify.app/)       |
 | Task 4 | ✅     | Bootstrap Quiz              | -                                                            |
 
 ### Cycle 3:
@@ -129,7 +129,7 @@ Each task directory contains:
 Feel free to reach out through any of the following channels:
 
 -  📧 Email: [mahmoudfaresce@gmail.com](mailto:mahmoudfaresce@gmail.com)
--  💼 LinkedIn: [Mahmoud Fares](https://www.linkedin.com/in/mahmoud-fares-15929721a/)
+-  💼 LinkedIn: [https://www.linkedin.com/in/mahmoudfares7/](https://www.linkedin.com/in/mahmoudfares7/)
 -  🐱 GitHub: [@Mahmoud-Fares](https://github.com/Mahmoud-Fares)
 -  💬 Discord: mahmoudfares.
 
