@@ -1,0 +1,126 @@
+:root {
+   --primary-color: #001e4d;
+   --text-color: #222;
+   --white: white;
+   --border-radius: 10px;
+   --spacing-sm: 10px;
+   --spacing-md: 20px;
+   --spacing-lg: 30px;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   font-family: "Poppins", sans-serif;
+   box-sizing: border-box;
+}
+
+body {
+   background-color: var(--primary-color);
+}
+
+main {
+   background-color: var(--white);
+   padding: var(--spacing-lg);
+   margin-block-start: 100px;
+   margin-inline: auto;
+   width: min(90%, 600px);
+   border-radius: var(--border-radius);
+
+   & h1 {
+      font-size: 25px;
+      color: var(--primary-color);
+      font-weight: 600;
+      border-block-end: 1px solid #333;
+      padding-block-end: var(--spacing-lg);
+   }
+}
+
+.container {
+   padding: var(--spacing-md);
+   opacity: 1;
+   transform: translateX(0);
+   transition: all 0.3s ease-in-out;
+
+   & h2 {
+      font-size: 18px;
+      color: var(--primary-color);
+      font-weight: 600;
+   }
+
+   &.slide-out {
+      opacity: 0;
+      transform: translateX(-100px);
+   }
+
+   &.slide-in {
+      opacity: 0;
+      transform: translateX(100px);
+   }
+}
+
+.btn {
+   background-color: var(--white);
+   color: var(--text-color);
+   font-weight: 500;
+   width: 100%;
+   border: 1px solid var(--text-color);
+   padding: var(--spacing-sm);
+   margin-block: var(--spacing-sm);
+   text-align: start;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   transform: scale(1);
+   transition: all 0.2s ease-in-out;
+
+   &:hover:not([disabled]) {
+      background-color: var(--primary-color);
+
+      color: var(--white);
+   }
+
+   &:disabled {
+      cursor: not-allowed;
+   }
+
+   &.correct {
+      background-color: #9aeabc;
+   }
+
+   &.incorrect {
+      background-color: #ff9393;
+   }
+
+   &:active {
+      transform: scale(0.98);
+   }
+
+   &.correct,
+   &.incorrect {
+      transform: scale(1.02);
+   }
+}
+
+#next-btn,
+#again-btn {
+   display: block;
+   width: 150px;
+   background-color: var(--primary-color);
+   color: var(--white);
+   font-weight: 500;
+   border: 0;
+   padding: var(--spacing-sm);
+   margin-block-start: var(--spacing-md);
+   margin-inline: auto;
+   border-radius: 4px;
+   cursor: pointer;
+   opacity: 0;
+   transform: translateY(20px);
+   transition: all 0.3s ease-in-out;
+
+   &.show {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
