@@ -5,6 +5,17 @@ if (!localStorage.getItem("users")) {
 
 function checkAuth() {
    const user = localStorage.getItem("user");
+
+   // If user is logged in and tries to access login/signup, redirect to home
+   if (
+      user &&
+      (window.location.hash === "#login" || window.location.hash === "#signup")
+   ) {
+      window.location.hash = "#";
+      return;
+   }
+
+   // If user is not logged in and tries to access other pages, redirect to login
    if (
       !user &&
       !window.location.hash.includes("#login") &&
