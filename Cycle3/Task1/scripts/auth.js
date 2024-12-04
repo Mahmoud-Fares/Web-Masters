@@ -90,26 +90,45 @@ function handleLogout() {
 
 function renderLogin() {
    return `
-        <div class="min-h-screen flex items-center justify-center bg-gray-50">
+        <div class="min-h-screen flex items-center justify-center bg-gray-50" role="main">
             <div class="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
-                <h2 class="text-3xl font-bold text-center text-gray-900">Login</h2>
-                <form onsubmit="handleLogin(event)" class="mt-8 space-y-6">
+                <h1 class="text-3xl font-bold text-center text-gray-900">Login</h1>
+                <form onsubmit="handleLogin(event)" class="mt-8 space-y-6" aria-label="Login form">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" id="login-email" required class="mt-1 block w-full px-3 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                        <label for="login-email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input 
+                            type="email" 
+                            id="login-email" 
+                            name="email"
+                            required 
+                            autocomplete="email"
+                            aria-required="true"
+                            class="mt-1 block w-full px-3 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Password</label>
-                        <input type="password" id="login-password" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                        <label for="login-password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input 
+                            type="password" 
+                            id="login-password"
+                            name="password" 
+                            required 
+                            autocomplete="current-password"
+                            aria-required="true"
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
                     </div>
-                    <button type="submit" class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700">
+                    <button 
+                        type="submit" 
+                        class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        aria-label="Login to your account">
                         Login
                     </button>
                 </form>
                 <div class="text-center mt-4">
                     <p class="text-sm text-gray-600">
                         Don't have an account? 
-                        <a href="#signup" class="font-medium text-indigo-600 hover:text-indigo-500">
+                        <a href="#signup" 
+                           class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                           aria-label="Go to sign up page">
                             Sign up
                         </a>
                     </p>
@@ -121,34 +140,74 @@ function renderLogin() {
 
 function renderSignup() {
    return `
-        <div class="min-h-screen flex items-center justify-center bg-gray-50">
+        <div class="min-h-screen flex items-center justify-center bg-gray-50" role="main">
             <div class="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
-                <h2 class="text-3xl font-bold text-center text-gray-900">Sign Up</h2>
-                <form onsubmit="handleSignup(event)" class="mt-8 space-y-6">
+                <h1 class="text-3xl font-bold text-center text-gray-900">Sign Up</h1>
+                <form onsubmit="handleSignup(event)" class="mt-8 space-y-6" aria-label="Sign up form">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Username</label>
-                        <input type="text" id="signup-username" required minlength="3" class="mt-1 block w-full px-3 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                        <label for="signup-username" class="block text-sm font-medium text-gray-700">Username</label>
+                        <input 
+                            type="text" 
+                            id="signup-username"
+                            placeholder="Just like (John)"
+                            name="username"
+                            required 
+                            minlength="3"
+                            autocomplete="username"
+                            aria-required="true"
+                            class="mt-1 block w-full px-3 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" id="signup-email" required class="mt-1 block w-full px-3 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                        <label for="signup-email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input 
+                            type="email" 
+                            id="signup-email"
+                            placeholder="john@example.com" 
+                            name="email"
+                            required 
+                            autocomplete="email"
+                            aria-required="true"
+                            class="mt-1 block w-full px-3 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Password</label>
-                        <input type="password" id="signup-password" required minlength="6" class="mt-1 block w-full px-3 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                        <label for="signup-password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input 
+                            type="password" 
+                            id="signup-password" 
+                            name="new-password"
+                            required 
+                            minlength="6"
+                            autocomplete="new-password"
+                            aria-required="true"
+                            aria-describedby="password-requirements"
+                            class="mt-1 block w-full px-3 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                        <span id="password-requirements" class="text-xs text-gray-500">Password must be at least 6 characters long</span>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Confirm Password</label>
-                        <input type="password" id="signup-confirm-password" required minlength="6" class="mt-1 block w-full px-3 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                        <label for="signup-confirm-password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                        <input 
+                            type="password" 
+                            id="signup-confirm-password" 
+                            name="confirm-password"
+                            required 
+                            minlength="6"
+                            autocomplete="new-password"
+                            aria-required="true"
+                            class="mt-1 block w-full px-3 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
                     </div>
-                    <button type="submit" class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700">
+                    <button 
+                        type="submit" 
+                        class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        aria-label="Create your account">
                         Sign Up
                     </button>
                 </form>
                 <div class="text-center mt-4">
                     <p class="text-sm text-gray-600">
                         Already have an account? 
-                        <a href="#login" class="font-medium text-indigo-600 hover:text-indigo-500">
+                        <a href="#login" 
+                           class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                           aria-label="Go to login page">
                             Login
                         </a>
                     </p>

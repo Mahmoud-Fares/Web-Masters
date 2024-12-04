@@ -6,6 +6,8 @@ const Toast = {
          container.id = "toast-container";
          container.className =
             "fixed bottom-4 right-4 z-50 flex flex-col gap-2";
+         container.setAttribute("role", "alert");
+         container.setAttribute("aria-live", "polite");
          document.body.appendChild(container);
       }
    },
@@ -21,10 +23,14 @@ const Toast = {
             transition-all duration-300 ease-out flex items-center space-x-2 min-w-[300px]
             ${this.getTypeStyles(type)}
         `;
+      toast.setAttribute("role", "status");
+      toast.setAttribute("aria-atomic", "true");
 
       // Add icon and message
       toast.innerHTML = `
-            <span class="text-lg font-bold">${this.getIcon(type)}</span>
+            <span class="text-lg font-bold" aria-hidden="true">${this.getIcon(
+               type
+            )}</span>
             <p class="font-medium">${message}</p>
         `;
 

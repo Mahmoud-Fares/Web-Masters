@@ -116,83 +116,103 @@ function isProductInCart(productId) {
 function renderProducts() {
    const user = JSON.parse(localStorage.getItem("user"));
    return `
-        <div class="container mx-auto px-4 py-8">
-            <div class="flex gap-2 justify-between items-center mb-8">
-                <h1 class="text-3xl font-bold">Welcome, ${user.username}</h1>
-                <div class="grid md:grid-cols-2 gap-2">
-                    <a href="#cart" 
-                        class="flex items-center gap-2 px-4 py-2 rounded-xl shadow-sm 
-                        text-white bg-indigo-600 hover:bg-indigo-700 
-                        transform hover:-translate-y-0.5 transition-all duration-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                           <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                        </svg>
-                        <span class="hidden md:inline">Cart ( ${getCartCount()} )</span>
-                    </a>
-                    <button onclick="handleLogout()" 
-                        class="flex items-center gap-2 px-4 py-2 rounded-xl shadow-sm text-white 
-                        bg-red-600 hover:bg-red-700 transition-colors duration-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
-                        </svg>
-                        <span class="hidden md:inline">Logout</span>
-                    </button>
-                </div>
-            </div>
+        <main>
+            <header class="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm z-10 px-4 py-4">
+               <div class="container mx-auto flex gap-2 flex-wrap justify-between items-center">  
+               <h1 class="text-3xl font-bold">Welcome, ${user.username}</h1>
+               <nav class="grid sm:grid-cols-2 gap-2" role="navigation">
+                  <a href="#cart" 
+                     class="flex items-center justify-center gap-2 px-4 py-2 rounded-xl shadow-sm 
+                     text-white bg-indigo-600 hover:bg-indigo-700 
+                     transform hover:-translate-y-0.5 transition-all duration-200"
+                     aria-label="View cart with ${getCartCount()} items">
+                     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                     </svg>
+                     <span class="hidden md:inline">Cart ( ${getCartCount()} )</span>
+                  </a>  
+                  <button onclick="handleLogout()" 
+                     class="hidden sm:flex items-center justify-center gap-2 px-4 py-2 rounded-xl shadow-sm text-white 
+                     bg-red-600 hover:bg-red-700 transition-colors duration-200"
+                     aria-label="Logout from account">
+                     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                     </svg>
+                     <span class="hidden md:inline">Logout</span>
+                  </button>
+               </nav>
+               </div>  
+            </header>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Floating logout button for small screens -->
+            <button onclick="handleLogout()" 
+               class="sm:hidden fixed bottom-4 left-6 p-3 rounded-full shadow-lg text-white 
+               bg-red-600 hover:bg-red-700 transition-colors duration-200 z-50"
+               aria-label="Logout from account">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+               </svg>
+            </button>
+
+            <section class="container mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" role="grid" aria-label="Products list">
                 ${products
                    .map((product) => {
                       const inCart = isProductInCart(product.id);
                       return `
-                        <div class="group bg-white rounded-2xl shadow-md hover:shadow-xl 
-                            transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
-                            <div class="relative pt-[75%] bg-gray-100 rounded-t-2xl overflow-hidden">
+                        <article class="group bg-white rounded-2xl shadow-md hover:shadow-xl 
+                            transition-all duration-300 transform hover:-translate-y-1 flex flex-col"
+                            role="gridcell">
+                           <div class="relative pt-[75%] bg-gray-100 rounded-t-2xl overflow-hidden">
                               <img src="${product.image}" 
                                  alt="${product.name}" 
                                  class="absolute inset-0 w-full h-full object-cover transform 
                                  transition-transform duration-500 group-hover:scale-110"
                               />
-                            </div>
-                            <div class="p-6 flex flex-col flex-grow">
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2 
-                                    group-hover:text-indigo-600 transition-colors duration-200">
-                                    ${product.name}
-                                </h3>
-                                <p class="text-gray-600 text-sm flex-grow">
-                                    ${product.description}
-                                </p>
-                                <div class="pt-4 mt-4 border-t border-gray-100">
-                                    <div class="flex items-center justify-between mb-4">
-                                        <span class="text-2xl font-bold text-gray-900">
-                                          $${product.price}
-                                        </span>
-                                        <span class="px-3 py-1 text-sm font-medium text-indigo-600 
-                                          bg-indigo-50 rounded-full">
+                           </div>
+                           <div class="p-6 flex flex-col flex-grow">
+                              <h2 class="text-xl font-semibold text-gray-900 mb-2 
+                              group-hover:text-indigo-600 transition-colors duration-200">
+                                 ${product.name}
+                              </h2>
+                              <p class="text-gray-600 text-sm flex-grow" aria-label="Product description">
+                                 ${product.description}
+                              </p>
+                              <div class="pt-4 mt-4 border-t border-gray-100">
+                                 <div class="flex items-center justify-between mb-4">
+                                    <span class="text-2xl font-bold text-gray-900" aria-label="Price">
+                                       $${product.price}
+                                    </span>
+                                    <span class="px-3 py-1 text-sm font-medium text-indigo-600 
+                                          bg-indigo-50 rounded-full" role="status">
                                           ${inCart ? "In Cart" : "Available"}
-                                        </span>
-                                    </div>
-                                    <button onclick="addToCart(${product.id})" 
-                                        class="w-full py-3 px-4 rounded-xl font-medium text-white
-                                        ${
-                                           inCart
-                                              ? "bg-red-600 hover:bg-red-700"
-                                              : "bg-indigo-600 hover:bg-indigo-700"
-                                        } 
-                                        transform hover:-translate-y-0.5 transition-all duration-200">
-                                        ${
-                                           inCart
-                                              ? "Remove from Cart"
-                                              : "Add to Cart"
-                                        }
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                                    </span>
+                                 </div>
+                                 <button onclick="addToCart(${product.id})" 
+                                    class="w-full py-3 px-4 rounded-xl font-medium text-white
+                                       ${
+                                          inCart
+                                             ? "bg-red-600 hover:bg-red-700"
+                                             : "bg-indigo-600 hover:bg-indigo-700"
+                                       } 
+                                       transform hover:-translate-y-0.5 transition-all duration-200"
+                                       aria-label="${
+                                          inCart
+                                             ? `Remove ${product.name} from cart`
+                                             : `Add ${product.name} to cart`
+                                       }">
+                                       ${
+                                          inCart
+                                             ? "Remove from Cart"
+                                             : "Add to Cart"
+                                       }
+                                 </button>
+                              </div>
+                           </div>
+                        </article>
                     `;
                    })
                    .join("")}
-            </div>
-        </div>
+            </section>
+        </main>
     `;
 }
