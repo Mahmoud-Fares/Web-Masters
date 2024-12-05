@@ -92,12 +92,12 @@ The internship is structured into 4 cycles, with each cycle containing 4 distinc
 
 ### Cycle 3:
 
-| Task   | Status | Description | Live Demo |
-| ------ | ------ | ----------- | --------- |
-| Task 1 | 📝     | Coming Soon | -         |
-| Task 2 | 📝     | Coming Soon | -         |
-| Task 3 | 📝     | Coming Soon | -         |
-| Task 4 | 📝     | Coming Soon | -         |
+| Task   | Status | Description                                                          | Live Demo                                                     |
+| ------ | ------ | -------------------------------------------------------------------- | ------------------------------------------------------------- |
+| Task 1 | ✅     | Shopping Cart ( Vanilla JS )                                         | [View Demo](https://mahmoud-fares-shooping-cart.netlify.app/) |
+| Task 2 | ✅     | Js Quiz                                                              | -                                                             |
+| Task 3 | ✅     | Four simple problems to solve                                        | -                                                             |
+| Task 4 | ✅     | Record a video about OOP Principles in Js and one about ES6 features | -                                                             |
 
 ### Cycle 4: Final Projects
 
