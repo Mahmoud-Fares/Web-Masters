@@ -1,6 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 
 function App() {
+   [].map(function (item) {
+      console.log(item);
+   });
    return (
       <>
          <h1 className="text-3xl font-bold underline">Hello world!</h1>
