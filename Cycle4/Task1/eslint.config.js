@@ -1,4 +1,5 @@
 import checkFile from 'eslint-plugin-check-file';
+import reactCompiler from 'eslint-plugin-react-compiler';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
@@ -20,8 +21,11 @@ export default {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       'check-file': checkFile,
+      'react-compiler': reactCompiler,
    },
    rules: {
+      // react-compiler
+      'react-compiler/react-compiler': 'error',
       // custom rules
       'prefer-arrow-callback': 'error',
       'prefer-template': 'error',
