@@ -1,0 +1,13 @@
+[build]
+  base = "Cycle4/Task1"
+  command = "pnpm install && pnpm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  VITE_TSCONFIG_PATHS = "true"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200 

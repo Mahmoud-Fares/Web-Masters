@@ -8,12 +8,24 @@ import tseslint from 'typescript-eslint';
 export default {
    ignores: ['dist'],
    files: ['**/*.{ts,tsx}'],
+   settings: {
+      react: { version: 'detect' },
+      'import/resolver': {
+         alias: {
+            map: [['@', './src']],
+            extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+         },
+      },
+   },
+
    languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
       parser: tseslint.parser,
       parserOptions: {
          projectService: true,
+         project: ['./tsconfig.node.json', './tsconfig.app.json'],
+         tsconfigRootDir: import.meta.dirname,
       },
    },
    plugins: {

@@ -51,6 +51,16 @@ export default {
                4: 'hsl(var(--chart-4))',
                5: 'hsl(var(--chart-5))',
             },
+
+            // from figma
+            secondary1: '#FEFAF1', // hsl(39, 82%, 97%)
+            text: '#FAFAFA',
+            text1: '#7D8184',
+            text2: '#000000',
+            button: '#000000',
+            button1: '#00FF66',
+            button2: '#DB4444',
+            hoverButton: '#E07575',
          },
       },
    },
