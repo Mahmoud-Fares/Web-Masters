@@ -1,7 +1,7 @@
+import CartButton from '@/components/buttons/cart-button';
 import { Product } from '@/lib/mock-data';
 
 import CardIcons from './card-icons';
-import CartButton from './cart-button';
 import DiscountBadge from './discount-badge';
 
 export default function CardThumbnail({ product }: { product: Product }) {

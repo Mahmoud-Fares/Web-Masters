@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import SizeOptionButton from '@/components/buttons/size-option-button';
 import { cn } from '@/lib/utils';
 
 interface SizeSelectorProps {
@@ -18,18 +18,16 @@ export default function SizeSelector({
 
          <div className="flex flex-wrap items-center gap-2">
             {sizes.map((size) => (
-               <Button
+               <SizeOptionButton
                   key={size}
                   onClick={() => onSelectSize(size)}
-                  variant={selectedSize === size ? 'default' : 'outline'}
-                  size="icon"
                   className={cn(
-                     'rounded-md border uppercase shadow-none hover:border-primary',
-                     selectedSize === size && 'border-transparent'
+                     'uppercase',
+                     selectedSize === size && 'bg-primary text-white'
                   )}
                >
                   {size}
-               </Button>
+               </SizeOptionButton>
             ))}
          </div>
       </div>

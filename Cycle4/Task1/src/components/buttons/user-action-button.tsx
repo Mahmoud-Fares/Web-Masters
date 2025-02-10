@@ -1,21 +1,24 @@
-import { Eye } from 'lucide-react';
-
 import { Button, ButtonProps } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-type viewButtonProps = {
+export type UserActionButtonProps = {
    variant?: ButtonProps['variant'];
    size?: ButtonProps['size'];
    className?: string;
+   children?: React.ReactNode;
+   onClick?: () => void;
 };
 
-export default function ViewButton({
+export default function UserActionButton({
    variant,
    size,
    className,
-}: viewButtonProps) {
+   children,
+   onClick,
+}: UserActionButtonProps) {
    return (
       <Button
+         onClick={onClick}
          className={cn(
             'rounded-md transition duration-300 hover:bg-primary hover:text-white',
             className
@@ -23,7 +26,7 @@ export default function ViewButton({
          variant={variant || 'outline'}
          size={size || 'icon'}
       >
-         <Eye />
+         {children}
       </Button>
    );
 }

@@ -1,7 +1,6 @@
-import FavButton from '@/components/fav-button';
-
-import TrashButton from './trash-button';
-import ViewButton from './view-button';
+import FavButton from '@/components/buttons/fav-button';
+import TrashButton from '@/components/buttons/trash-button';
+import ViewButton from '@/components/buttons/view-button';
 
 const ICONS = ['trash', 'view', 'favourite'] as const;
 type IconType = (typeof ICONS)[number];

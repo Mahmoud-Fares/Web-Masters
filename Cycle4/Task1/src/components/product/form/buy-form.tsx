@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import FavButton from '@/components/fav-button';
+import FavButton from '@/components/buttons/fav-button';
 import { Button } from '@/components/ui/button';
 import { Product } from '@/lib/mock-data';
 

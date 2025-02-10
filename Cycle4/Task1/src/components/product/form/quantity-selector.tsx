@@ -1,6 +1,9 @@
 import { Minus, Plus } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
+import {
+   default as DecrementButton,
+   default as IncrementButton,
+} from '@/components/buttons/quantity-button';
 
 export default function QuantitySelector({
    quantity,
@@ -11,25 +14,21 @@ export default function QuantitySelector({
 }) {
    return (
       <div className="flex items-center overflow-hidden rounded-md border border-muted-foreground">
-         <Button
+         <DecrementButton
+            className="rounded-none border-r border-transparent border-r-muted-foreground"
             onClick={() => onQuantityChange(Math.max(1, quantity - 1))}
-            variant={'outline'}
-            size={'icon'}
-            className="rounded-none border-r border-transparent border-r-muted-foreground shadow-none hover:bg-primary hover:text-white"
          >
             <Minus />
-         </Button>
+         </DecrementButton>
 
          <span className="w-12 text-center">{quantity}</span>
 
-         <Button
+         <IncrementButton
+            className="rounded-none border-l border-transparent border-l-muted-foreground"
             onClick={() => onQuantityChange(quantity + 1)}
-            variant={'outline'}
-            size={'icon'}
-            className="rounded-none border-l border-transparent border-l-muted-foreground shadow-none hover:bg-primary hover:text-white"
          >
             <Plus />
-         </Button>
+         </IncrementButton>
       </div>
    );
 }
