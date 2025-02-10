@@ -1,5 +1,6 @@
 import { Product } from '@/lib/mock-data';
 
+import Price from './price';
 import Rate from './rate';
 import Review from './review';
 import StockCheck from './stock-check';
@@ -10,14 +11,17 @@ export default function ProductInfo({ product }: { product: Product }) {
          <h2 className="text-2xl font-semibold">{product.name}</h2>
 
          <div className="flex flex-wrap items-center gap-4">
-            <Review reviews={product.reviews} />
+            <Review
+               reviews={product.reviews}
+               className="border-r-2 border-muted-foreground/75 pr-4"
+            />
 
             <Rate rate={product.rating} />
 
             <StockCheck inStock={product.inStock} />
          </div>
 
-         <p className="text-2xl font-medium">${product.price.toFixed(2)}</p>
+         <Price price={product.price} discount={product.discount} />
 
          <p className="pb-6 pt-4">{product.description}</p>
       </div>
