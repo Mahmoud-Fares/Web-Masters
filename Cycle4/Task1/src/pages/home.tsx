@@ -9,9 +9,7 @@ export default function Home() {
       <>
          <div className="flex flex-1 flex-col items-center justify-center gap-4 py-8">
             <h1 className="text-3xl font-bold underline">Hello world!</h1>
-            <Button onClick={() => navigate('/product/1')}>
-               Goto product page
-            </Button>
+            <Button onClick={() => navigate('/about')}>Goto about page</Button>
          </div>
       </>
    );
