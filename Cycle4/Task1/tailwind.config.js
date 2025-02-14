@@ -51,6 +51,34 @@ export default {
                4: 'hsl(var(--chart-4))',
                5: 'hsl(var(--chart-5))',
             },
+
+            success: '#00FF66',
+            gold: '#FFAD33',
+
+            'primary-hover': '#E07575',
+            'accent-hover': '#E07575',
+
+            // figma color names >> my theme
+            // BG: '#FFFFFF', // background
+
+            // hsla(0, 0%, 0%, 0.3)
+
+            // primary: '#FFFFFF', // background
+            // primary1: '#363738', // not used >> neglect
+
+            // secondary: '#F5F5F5', // card, input, secondary, muted
+            // secondary1: '#FEFAF1', // not used >> neglect
+            // secondary2: '#DB4444', // primary, accent
+
+            // text: '#FAFAFA', // primary, accent foreground
+            // text1: '#7D8184', // not used >> neglect
+            // text2: '#000000', // foreground
+
+            // button: '#000000', // simply black
+            // button1: '#00FF66', // success
+            // button2: '#DB4444', // primary
+            // hoverButton: '#E07575', // primary, accent hover
+            // hoverButton2: '#A0BCE0', // not used >> neglect
          },
       },
    },

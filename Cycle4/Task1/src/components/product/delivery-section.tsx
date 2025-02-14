@@ -2,7 +2,7 @@ import { RotateCcw, Truck } from 'lucide-react';
 
 export default function DeliverySection() {
    return (
-      <div className="rounded-md border border-muted-foreground">
+      <div className="rounded-md border">
          <div className="flex items-center gap-3 p-4">
             <Truck className="size-5" />
             <div>
@@ -13,7 +13,7 @@ export default function DeliverySection() {
             </div>
          </div>
 
-         <div className="flex items-center gap-3 border-t border-muted-foreground p-4">
+         <div className="flex items-center gap-3 border-t p-4">
             <RotateCcw className="size-5" />
             <div>
                <h4 className="font-medium">Return Delivery</h4>

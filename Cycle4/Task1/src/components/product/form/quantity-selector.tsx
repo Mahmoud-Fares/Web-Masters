@@ -13,9 +13,9 @@ export default function QuantitySelector({
    onQuantityChange: (quantity: number) => void;
 }) {
    return (
-      <div className="flex items-center overflow-hidden rounded-md border border-muted-foreground">
+      <div className="flex items-center overflow-hidden rounded-md border">
          <DecrementButton
-            className="rounded-none border-r border-transparent border-r-muted-foreground"
+            className="rounded-none border-r border-transparent border-r-border"
             onClick={() => onQuantityChange(Math.max(1, quantity - 1))}
          >
             <Minus />
@@ -24,7 +24,7 @@ export default function QuantitySelector({
          <span className="w-12 text-center">{quantity}</span>
 
          <IncrementButton
-            className="rounded-none border-l border-transparent border-l-muted-foreground"
+            className="rounded-none border-l border-transparent border-l-border"
             onClick={() => onQuantityChange(quantity + 1)}
          >
             <Plus />

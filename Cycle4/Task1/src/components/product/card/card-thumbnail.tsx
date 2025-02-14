@@ -6,7 +6,7 @@ import DiscountBadge from './discount-badge';
 
 export default function CardThumbnail({ product }: { product: Product }) {
    return (
-      <div className="group relative flex aspect-[270/250] max-w-[270px] items-center justify-center overflow-hidden rounded bg-secondary p-10">
+      <div className="group relative flex aspect-[270/250] max-w-[270px] items-center justify-center overflow-hidden rounded bg-card p-10">
          <img
             src={product.images[0]}
             alt={`${product.name} thumbnail`}

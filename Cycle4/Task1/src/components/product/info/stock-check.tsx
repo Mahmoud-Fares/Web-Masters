@@ -1,7 +1,7 @@
 export default function StockCheck({ inStock }: { inStock: boolean }) {
    return inStock ? (
-      <span className="text-green-500">In Stock</span>
+      <span className="text-success">In Stock</span>
    ) : (
-      <span className="text-red-500">Out of Stock</span>
+      <span className="text-destructive">Out of Stock</span>
    );
 }

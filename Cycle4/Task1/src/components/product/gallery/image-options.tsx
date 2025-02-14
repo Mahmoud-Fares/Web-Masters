@@ -17,7 +17,7 @@ export default function ImageOptions({
             <button
                key={index}
                className={cn(
-                  'aspect-square w-16 overflow-hidden rounded border border-transparent bg-secondary p-2 transition-all hover:scale-105 hover:border-primary md:w-20',
+                  'aspect-square w-16 overflow-hidden rounded border border-transparent bg-card p-2 transition-all hover:scale-105 hover:border-primary md:w-20',
                   selectedIndex === index && 'border-primary'
                )}
                onClick={() => setSelectedIndex(index)}

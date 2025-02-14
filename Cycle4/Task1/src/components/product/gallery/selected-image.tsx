@@ -9,7 +9,7 @@ export default function SelectedImage({
    productName,
 }: SelectedImageProps) {
    return (
-      <div className={cn('aspect-[500/600] w-full rounded bg-secondary p-4')}>
+      <div className={cn('aspect-[500/600] w-full rounded bg-card p-4')}>
          <img
             src={image}
             alt={productName}

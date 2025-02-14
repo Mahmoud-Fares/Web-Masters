@@ -14,7 +14,7 @@ export default function BuyForm({ product }: { product: Product }) {
    const [selectedColor, setSelectedColor] = useState(product.colors?.[0]);
 
    return (
-      <div className="space-y-6 border-t border-muted-foreground py-6">
+      <div className="space-y-6 border-t py-6">
          {product.colors && (
             <ColorSelector
                colors={product.colors}

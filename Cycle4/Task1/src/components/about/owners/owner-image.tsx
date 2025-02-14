@@ -5,7 +5,7 @@ export default function OwnerImage({
    name,
 }: Partial<OwnerCardProps>) {
    return (
-      <div className="aspect-[370/430] h-[430px] rounded-md bg-secondary px-4 pt-4">
+      <div className="aspect-[370/430] h-[430px] rounded-md bg-card px-4 pt-4">
          <img
             src={imageUrl}
             alt={name}

@@ -17,9 +17,7 @@ export default function StatisticsCard({
       <div
          className={cn(
             'flex flex-col items-center gap-4 rounded-md bg-white p-6',
-            focus
-               ? 'bg-primary text-white'
-               : 'border border-muted-foreground/50'
+            focus ? 'bg-primary text-white' : 'border'
          )}
       >
          <div className="flex items-center justify-center text-primary">

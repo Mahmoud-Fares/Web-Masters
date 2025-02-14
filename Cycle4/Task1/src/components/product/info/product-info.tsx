@@ -11,10 +11,7 @@ export default function ProductInfo({ product }: { product: Product }) {
          <h2 className="text-2xl font-semibold">{product.name}</h2>
 
          <div className="flex flex-wrap items-center gap-4">
-            <Review
-               reviews={product.reviews}
-               className="border-r-2 border-muted-foreground/75 pr-4"
-            />
+            <Review reviews={product.reviews} className="border-r-2 pr-4" />
 
             <Rate rate={product.rating} />
 
