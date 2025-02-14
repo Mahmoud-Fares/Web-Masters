@@ -16,7 +16,7 @@ export default function ExclusiveSection() {
             <Input
                type="email"
                placeholder="Enter your email"
-               className="border-transparent focus-visible:ring-transparent"
+               className="border-transparent !bg-transparent focus-visible:ring-transparent"
             />
 
             <Button
