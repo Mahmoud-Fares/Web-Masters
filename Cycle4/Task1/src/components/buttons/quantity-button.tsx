@@ -1,6 +1,6 @@
 import UserActionButton, { UserActionButtonProps } from './user-action-button';
 
-export default function DecrementButton({
+export default function QuantityButton({
    variant,
    size,
    className,

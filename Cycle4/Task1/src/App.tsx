@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { AuthLayout } from '@/components/layout/auth-layout';
 import MainLayout from '@/components/layout/main-layout';
 import AboutPage from '@/pages/about';
+import CartPage from '@/pages/cart';
 import ContactPage from '@/pages/contact';
 import Home from '@/pages/home';
 import LoginPage from '@/pages/login';
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
          {
             path: 'about',
             element: <AboutPage />,
+         },
+         {
+            path: 'cart',
+            element: <CartPage />,
          },
          {
             path: '*',
