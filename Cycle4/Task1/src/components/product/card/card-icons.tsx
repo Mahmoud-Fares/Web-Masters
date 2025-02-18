@@ -2,8 +2,22 @@ import FavButton from '@/components/buttons/fav-button';
 import TrashButton from '@/components/buttons/trash-button';
 import ViewButton from '@/components/buttons/view-button';
 
-const ICONS = ['trash', 'view', 'favourite'] as const;
-type IconType = (typeof ICONS)[number];
+const ICONS = [
+   {
+      key: 'trash',
+      icon: TrashButton,
+   },
+   {
+      key: 'view',
+      icon: ViewButton,
+   },
+   {
+      key: 'favourite',
+      icon: FavButton,
+   },
+] as const;
+
+export type IconType = (typeof ICONS)[number]['key'];
 
 type CardIconsProps = {
    className?: string;
@@ -13,17 +27,15 @@ type CardIconsProps = {
 export default function CardIcons({ className, icons }: CardIconsProps) {
    return (
       <div className={className}>
-         {icons.includes('trash') && (
-            <TrashButton className="invisible rounded-full opacity-0 duration-300 group-hover:visible group-hover:opacity-100" />
-         )}
-
-         {icons.includes('favourite') && (
-            <FavButton className="invisible rounded-full opacity-0 duration-300 group-hover:visible group-hover:opacity-100" />
-         )}
-
-         {icons.includes('view') && (
-            <ViewButton className="invisible rounded-full opacity-0 duration-300 group-hover:visible group-hover:opacity-100" />
-         )}
+         {ICONS.filter((item) => icons.includes(item.key)).map((item) => {
+            const Icon = item.icon;
+            return (
+               <Icon
+                  key={item.key}
+                  className="invisible rounded-full opacity-0 duration-300 group-hover:visible group-hover:opacity-100"
+               />
+            );
+         })}
       </div>
    );
 }

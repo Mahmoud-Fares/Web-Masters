@@ -1,16 +1,24 @@
 import CartButton from '@/components/buttons/cart-button';
 import { Product } from '@/lib/mock-data';
 
-import CardIcons from './card-icons';
+import CardIcons, { IconType } from './card-icons';
 import DiscountBadge from './discount-badge';
 
-export default function CardThumbnail({ product }: { product: Product }) {
+type CardThumbnailProps = {
+   product: Product;
+   icons?: IconType[];
+};
+
+export default function CardThumbnail({
+   product,
+   icons = ['favourite', 'view'],
+}: CardThumbnailProps) {
    return (
-      <div className="group relative flex aspect-[270/250] max-w-[270px] items-center justify-center overflow-hidden rounded bg-card p-10">
+      <div className="group relative flex aspect-[270/250] items-center justify-center overflow-hidden rounded bg-card p-10">
          <img
             src={product.images[0]}
             alt={`${product.name} thumbnail`}
-            className="block"
+            className="block max-h-[90%]"
          />
 
          <DiscountBadge
@@ -19,7 +27,7 @@ export default function CardThumbnail({ product }: { product: Product }) {
          />
 
          <CardIcons
-            icons={['favourite', 'view']}
+            icons={icons}
             className="absolute right-3 top-3 flex flex-col gap-2"
          />
 
