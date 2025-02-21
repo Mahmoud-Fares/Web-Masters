@@ -11,21 +11,29 @@ export default function AccountSection() {
                   My Account
                </NavLink>
             </li>
-            <li>
+
+            <li className="flex items-center gap-1">
                <NavLink to="/login" className="hover:text-[#E94444]">
-                  Login / Register
+                  Login
+               </NavLink>
+               <span>/</span>
+               <NavLink to="/signup" className="hover:text-[#E94444]">
+                  Register
                </NavLink>
             </li>
+
             <li>
                <NavLink to="/cart" className="hover:text-[#E94444]">
                   Cart
                </NavLink>
             </li>
+
             <li>
                <NavLink to="/wishlist" className="hover:text-[#E94444]">
                   Wishlist
                </NavLink>
             </li>
+
             <li>
                <NavLink to="/shop" className="hover:text-[#E94444]">
                   Shop
