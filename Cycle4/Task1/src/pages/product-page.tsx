@@ -1,12 +1,13 @@
 import Container from '@/components/container';
 import CurrentProduct from '@/components/product/current-product';
+import RelatedItemsSection from '@/components/product/related-items-section';
 
 export default function ProductPage() {
    return (
       <Container>
          <CurrentProduct />
 
-         {/* related products */}
+         <RelatedItemsSection />
       </Container>
    );
 }
