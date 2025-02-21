@@ -25,3 +25,4 @@ dist-ssr
 
 # .pnpm-store vm fix (for my sandbox)
 .npmrc
+.vercel

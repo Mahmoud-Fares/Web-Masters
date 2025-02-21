@@ -1,3 +1,5 @@
+'use no memo';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
@@ -18,14 +20,9 @@ const signupSchema = z.object({
    emailOrPhone: z
       .string()
       .min(1, 'Email or phone number is required')
-      .refine(
-         (value) => {
-            validateTheEmailAndPhone(value);
-         },
-         {
-            message: 'Please enter a valid email or phone number',
-         }
-      ),
+      .refine((value) => validateTheEmailAndPhone(value), {
+         message: 'Please enter a valid email or phone number',
+      }),
    password: z
       .string()
       .min(8, 'Password must be at least 8 characters')
@@ -39,10 +36,7 @@ type FormData = z.infer<typeof signupSchema>;
 export default function LoginForm({ className }: { className?: string }) {
    const form = useForm<FormData>({
       resolver: zodResolver(signupSchema),
-      defaultValues: {
-         emailOrPhone: '',
-         password: '',
-      },
+      defaultValues: { emailOrPhone: '', password: '' },
    });
 
    function onSubmit(data: FormData) {
