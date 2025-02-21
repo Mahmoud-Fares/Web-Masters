@@ -1,3 +1,5 @@
+import { User } from './stores/user-store';
+
 export interface Product {
    id: number;
    name: string;
@@ -144,3 +146,22 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const featuredProducts = PRODUCTS.slice(0, 3);
+
+export const USERS: User[] = [
+   {
+      id: 1,
+      firstName: 'Md',
+      lastName: 'Rimel',
+      email: 'rimel1111@gmail.com',
+      address: 'Kingston, 5236, United State',
+      password: 'hashedPassword123',
+   },
+   {
+      id: 2,
+      firstName: 'Mahmoud',
+      lastName: 'Fares',
+      email: 'email@email.com',
+      address: 'Los Angeles, 90001, United State',
+      password: 'Admin1234',
+   },
+];

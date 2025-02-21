@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -14,6 +14,7 @@ import {
    FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useUserStore } from '@/lib/stores/user-store';
 import { cn, validateTheEmailAndPhone } from '@/lib/utils';
 
 import GoogleIcon from './icons/google-icon';
@@ -37,6 +38,9 @@ const signupSchema = z.object({
 type FormData = z.infer<typeof signupSchema>;
 
 export default function SignUpForm({ className }: { className?: string }) {
+   const signup = useUserStore((state) => state.signup);
+   const navigate = useNavigate();
+
    const form = useForm<FormData>({
       resolver: zodResolver(signupSchema),
       defaultValues: {
@@ -47,8 +51,17 @@ export default function SignUpForm({ className }: { className?: string }) {
    });
 
    function onSubmit(data: FormData) {
-      // Handle form submission
-      console.log(data);
+      signup({
+         newUser: {
+            email: data.emailOrPhone,
+            password: data.password,
+            firstName: data.name.split(' ')[0],
+            lastName: data.name.split(' ')[1],
+            address: '',
+         },
+
+         navigate,
+      });
    }
 
    return (

@@ -1,7 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+import ErrorBoundary from '@/components/error-boundary';
 import { AuthLayout } from '@/components/layout/auth-layout';
 import MainLayout from '@/components/layout/main-layout';
+import ProtectedLayout from '@/components/layout/protected-layout';
 import AboutPage from '@/pages/about';
 import AccountPage from '@/pages/account';
 import BillingPage from '@/pages/billing';
@@ -18,6 +20,7 @@ export const router = createBrowserRouter([
    {
       path: '/',
       element: <MainLayout />,
+      errorElement: <ErrorBoundary />,
       children: [
          {
             index: true,
@@ -36,6 +39,18 @@ export const router = createBrowserRouter([
             element: <AboutPage />,
          },
          {
+            path: '*',
+            element: <NotFound />,
+         },
+      ],
+   },
+   // Protected routes group
+   {
+      path: '/',
+      element: <ProtectedLayout />,
+      errorElement: <ErrorBoundary />,
+      children: [
+         {
             path: 'cart',
             element: <CartPage />,
          },
@@ -51,15 +66,13 @@ export const router = createBrowserRouter([
             path: 'wishlist',
             element: <WishlistPage />,
          },
-         {
-            path: '*',
-            element: <NotFound />,
-         },
       ],
    },
+   // Auth routes group
    {
       path: '/',
       element: <AuthLayout />,
+      errorElement: <ErrorBoundary />,
       children: [
          {
             path: 'signup',
