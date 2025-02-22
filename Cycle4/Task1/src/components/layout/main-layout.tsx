@@ -12,10 +12,7 @@ export default function MainLayout({
       <div className="flex min-h-screen flex-col">
          <Header />
 
-         <main className="flex flex-1 flex-col">
-            {children}
-            <Outlet />
-         </main>
+         <main className="flex flex-1 flex-col">{children ?? <Outlet />}</main>
 
          <Footer />
       </div>
