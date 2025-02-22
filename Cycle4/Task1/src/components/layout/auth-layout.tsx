@@ -1,6 +1,17 @@
-import { Outlet } from 'react-router-dom';
+import { useEffect } from 'react';
+
+import { Outlet, useNavigate } from 'react-router-dom';
+
+import { useUserStore } from '@/lib/stores/user-store';
 
 export function AuthLayout() {
+   const currentUser = useUserStore((state) => state.currentUser);
+   const navigate = useNavigate();
+
+   useEffect(() => {
+      if (currentUser) navigate('/');
+   }, [currentUser, navigate]);
+
    return (
       <div className="flex min-h-screen py-12">
          {/* Left side - Image */}
