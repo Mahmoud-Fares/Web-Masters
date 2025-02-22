@@ -16,7 +16,7 @@ export default function DiscountBadge({
                className
             )}
          >
-            {discount}%
+            - {discount}%
          </div>
       )
    );

@@ -1,10 +1,22 @@
 import Container from '@/components/container';
 import ProductList from '@/components/product/product-list';
 import { Button } from '@/components/ui/button';
-import { PRODUCTS } from '@/lib/mock-data';
+import { EmptyState } from '@/components/ui/empty-state';
+import { useWishlistStore } from '@/lib/stores/wishlist-store';
 
 export default function WishlistSection() {
-   const products = PRODUCTS.slice(0, 4);
+   const { items: products } = useWishlistStore();
+
+   if (products.length === 0)
+      return (
+         <Container className="my-10">
+            <EmptyState
+               title="Your wishlist is empty"
+               description="Items added to your wishlist will appear here"
+            />
+         </Container>
+      );
+
    return (
       <Container>
          <div className="flex items-center justify-between">

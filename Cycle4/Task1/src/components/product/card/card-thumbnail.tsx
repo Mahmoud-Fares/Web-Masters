@@ -29,6 +29,7 @@ export default function CardThumbnail({
          <CardIcons
             icons={icons}
             className="absolute right-3 top-3 flex flex-col gap-2"
+            product={product}
          />
 
          <CartButton className="absolute bottom-0 right-0 w-full translate-y-[100%] rounded-t-none bg-black text-white duration-300 group-hover:translate-y-0">

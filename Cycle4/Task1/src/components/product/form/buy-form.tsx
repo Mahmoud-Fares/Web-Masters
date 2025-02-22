@@ -39,7 +39,7 @@ export default function BuyForm({ product }: { product: Product }) {
 
             <Button className="flex-1 rounded-md">Buy Now</Button>
 
-            <FavButton />
+            <FavButton product={product} />
          </div>
       </div>
    );

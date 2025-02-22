@@ -1,7 +1,6 @@
 import { Button, ButtonProps } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 
-export type UserActionButtonProps = {
+export type UserActionButtonProps = ButtonProps & {
    variant?: ButtonProps['variant'];
    size?: ButtonProps['size'];
    className?: string;
@@ -10,21 +9,20 @@ export type UserActionButtonProps = {
 };
 
 export default function UserActionButton({
-   variant,
-   size,
+   variant = 'outline',
+   size = 'icon',
    className,
    children,
    onClick,
+   ...rest
 }: UserActionButtonProps) {
    return (
       <Button
+         {...rest}
          onClick={onClick}
-         className={cn(
-            'rounded-md transition duration-300 hover:bg-primary hover:text-white',
-            className
-         )}
-         variant={variant || 'outline'}
-         size={size || 'icon'}
+         className={className}
+         variant={variant}
+         size={size}
       >
          {children}
       </Button>
