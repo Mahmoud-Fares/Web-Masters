@@ -1,3 +1,5 @@
+'use no memo';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -12,49 +14,42 @@ import {
    FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-
-const formSchema = z
-   .object({
-      firstName: z.string().min(2, 'First name must be at least 2 characters'),
-      lastName: z.string().min(2, 'Last name must be at least 2 characters'),
-      email: z.string().email('Invalid email address'),
-      address: z.string().min(5, 'Address must be at least 5 characters'),
-      currentPassword: z.string().optional(),
-      newPassword: z.string().optional(),
-      confirmPassword: z.string().optional(),
-   })
-   .refine(
-      (data) => {
-         if (data.newPassword && !data.currentPassword) {
-            return false;
-         }
-         if (data.newPassword !== data.confirmPassword) {
-            return false;
-         }
-         return true;
-      },
-      {
-         message: 'Passwords do not match or current password is required',
-         path: ['confirmPassword'],
-      }
-   );
+import { editProfileSchema } from '@/lib/schemas';
+import { useUserStore } from '@/lib/stores/user-store';
 
 export function EditProfileForm() {
-   const form = useForm<z.infer<typeof formSchema>>({
-      resolver: zodResolver(formSchema),
+   const currentUser = useUserStore((state) => state.currentUser);
+   const updateUser = useUserStore((state) => state.updateUser);
+
+   const form = useForm<z.infer<typeof editProfileSchema>>({
+      resolver: zodResolver(editProfileSchema),
       defaultValues: {
-         firstName: 'Md',
-         lastName: 'Rimel',
-         email: 'rimel1111@gmail.com',
-         address: 'Kingston, 5236, United State',
+         firstName: currentUser?.firstName ?? '',
+         lastName: currentUser?.lastName ?? '',
+         email: currentUser?.email ?? '',
+         address: currentUser?.address ?? '',
          currentPassword: '',
          newPassword: '',
          confirmPassword: '',
       },
    });
 
-   function onSubmit(values: z.infer<typeof formSchema>) {
-      console.log(values);
+   function onSubmit(values: z.infer<typeof editProfileSchema>) {
+      const updateSuccess = updateUser({
+         firstName: values.firstName,
+         lastName: values.lastName,
+         email: values.email,
+         address: values.address,
+         currentPassword: values.currentPassword,
+         newPassword: values.newPassword,
+      });
+
+      // Reset password fields after successful update
+      if (updateSuccess) {
+         form.resetField('currentPassword');
+         form.resetField('newPassword');
+         form.resetField('confirmPassword');
+      }
    }
 
    return (
@@ -199,7 +194,21 @@ export function EditProfileForm() {
                </div>
 
                <div className="flex justify-end space-x-4">
-                  <Button type="button" variant="outline">
+                  <Button
+                     type="button"
+                     variant="outline"
+                     onClick={() =>
+                        form.reset({
+                           firstName: currentUser?.firstName ?? '',
+                           lastName: currentUser?.lastName ?? '',
+                           email: currentUser?.email ?? '',
+                           address: currentUser?.address ?? '',
+                           currentPassword: '',
+                           newPassword: '',
+                           confirmPassword: '',
+                        })
+                     }
+                  >
                      Cancel
                   </Button>
 

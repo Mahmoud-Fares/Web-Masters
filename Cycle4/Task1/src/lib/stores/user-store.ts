@@ -27,6 +27,12 @@ interface UserState {
    login: ({ email, password, navigate }: loginProps) => void;
    logout: () => void;
    signup: ({ newUser, navigate }: signupProps) => void;
+   updateUser: (
+      updatedUser: Omit<User, 'id' | 'password'> & {
+         currentPassword?: string;
+         newPassword?: string;
+      }
+   ) => boolean;
 }
 
 export const useUserStore = create<UserState>()(
@@ -68,6 +74,57 @@ export const useUserStore = create<UserState>()(
             toast.success('Account created successfully!');
 
             navigate('/');
+         },
+         updateUser: (updatedUser) => {
+            try {
+               const { currentUser, users } = get();
+               if (!currentUser) return false;
+
+               const userIndex = users.findIndex(
+                  (u) => u.id === currentUser.id
+               );
+               if (userIndex === -1) return false;
+
+               if (updatedUser.newPassword) {
+                  if (
+                     users[userIndex].password !== updatedUser.currentPassword
+                  ) {
+                     toast.error('Current password is incorrect');
+                     return false;
+                  }
+
+                  // if new password is the same as the current password, don't update it
+                  if (users[userIndex].password === updatedUser.newPassword) {
+                     toast.error(
+                        'New password is the same as the current password'
+                     );
+                     return false;
+                  }
+               }
+
+               const updatedUsers = [...users];
+               const { currentPassword, newPassword, ...profileUpdates } =
+                  updatedUser;
+
+               updatedUsers[userIndex] = {
+                  ...updatedUsers[userIndex], // Existing user data
+                  ...profileUpdates, // Spread profile updates (firstName, lastName, email, address)
+                  password: newPassword || updatedUsers[userIndex].password, // Handle password update if exists
+               };
+
+               const { password: _, ...newCurrentUser } =
+                  updatedUsers[userIndex];
+
+               set({
+                  users: updatedUsers,
+                  currentUser: newCurrentUser,
+               });
+               toast.success('Profile updated successfully');
+               return true;
+            } catch (error) {
+               toast.error('Failed to update profile');
+               return false;
+            }
          },
       }),
       {

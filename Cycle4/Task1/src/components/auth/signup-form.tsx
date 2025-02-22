@@ -14,26 +14,11 @@ import {
    FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { signupSchema } from '@/lib/schemas';
 import { useUserStore } from '@/lib/stores/user-store';
-import { cn, validateTheEmailAndPhone } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 
 import GoogleIcon from './icons/google-icon';
-
-const signupSchema = z.object({
-   name: z.string().min(2, 'Name must be at least 2 characters'),
-   emailOrPhone: z
-      .string()
-      .min(1, 'Email or phone number is required')
-      .refine((value) => validateTheEmailAndPhone(value), {
-         message: 'Please enter a valid email or phone number',
-      }),
-   password: z
-      .string()
-      .min(8, 'Password must be at least 8 characters')
-      .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
-      .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
-      .regex(/[0-9]/, 'Password must contain at least one number'),
-});
 
 type FormData = z.infer<typeof signupSchema>;
 
