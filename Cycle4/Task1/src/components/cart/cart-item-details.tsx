@@ -1,6 +1,7 @@
 import { X } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { useCartStore } from '@/lib/stores/cart-store';
 import { cn } from '@/lib/utils';
 
 import { CardItem } from './types';
@@ -8,14 +9,14 @@ import { CardItem } from './types';
 type CartItemDetailsProps = {
    className?: string;
    item: CardItem;
-   onRemove: (id: number) => void;
 };
 
 export default function CartItemDetails({
    className,
    item,
-   onRemove,
 }: CartItemDetailsProps) {
+   const removeItem = useCartStore((state) => state.removeItem);
+
    return (
       <div className={cn('relative', className)}>
          <div className="flex flex-wrap items-center gap-2">
@@ -31,7 +32,7 @@ export default function CartItemDetails({
             variant="ghost"
             size="icon"
             className="invisible absolute left-0 top-0 aspect-square h-6 w-6 -translate-x-1/2 rounded-full bg-destructive text-destructive-foreground opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100"
-            onClick={() => onRemove(item.id)}
+            onClick={() => removeItem(item.id)}
          >
             <X className="h-4 w-4" />
          </Button>

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import FavButton from '@/components/buttons/fav-button';
 import { Button } from '@/components/ui/button';
 import { Product } from '@/lib/mock-data';
+import { useCartStore } from '@/lib/stores/cart-store';
 
 import ColorSelector from './color-selector';
 import QuantitySelector from './quantity-selector';
@@ -12,6 +13,17 @@ export default function BuyForm({ product }: { product: Product }) {
    const [quantity, setQuantity] = useState(1);
    const [selectedSize, setSelectedSize] = useState(product.sizes?.[0]);
    const [selectedColor, setSelectedColor] = useState(product.colors?.[0]);
+
+   const addToCart = useCartStore((state) => state.addItem);
+
+   const handleAddToCart = () => {
+      addToCart({
+         product,
+         quantity,
+         color: selectedColor,
+         size: selectedSize,
+      });
+   };
 
    return (
       <div className="space-y-6 border-t py-6">
@@ -37,7 +49,9 @@ export default function BuyForm({ product }: { product: Product }) {
                onQuantityChange={setQuantity}
             />
 
-            <Button className="flex-1 rounded-md">Buy Now</Button>
+            <Button className="flex-1 rounded-md" onClick={handleAddToCart}>
+               Buy Now
+            </Button>
 
             <FavButton product={product} />
          </div>

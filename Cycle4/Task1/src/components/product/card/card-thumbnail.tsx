@@ -32,7 +32,10 @@ export default function CardThumbnail({
             product={product}
          />
 
-         <CartButton className="absolute bottom-0 right-0 w-full translate-y-[100%] rounded-t-none bg-black text-white duration-300 group-hover:translate-y-0">
+         <CartButton
+            product={product}
+            className="absolute bottom-0 right-0 w-full translate-y-[100%] rounded-t-none bg-black text-white duration-300 group-hover:translate-y-0"
+         >
             Add To Cart
          </CartButton>
       </div>

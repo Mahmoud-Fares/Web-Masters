@@ -73,6 +73,8 @@ export const PRODUCTS: Product[] = [
          'I love the color and the size!',
          'The product is very good!',
       ],
+      colors: ['blue', 'red', 'green'],
+      sizes: ['s', 'm', 'l'],
    },
    {
       id: 3,
@@ -134,7 +136,7 @@ export const PRODUCTS: Product[] = [
       rating: 4,
       inStock: true,
       colors: ['white', 'black', 'red'],
-      sizes: ['M'],
+      sizes: ['M', 'L'],
       description:
          'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.',
       reviews: [
