@@ -1,5 +1,8 @@
+'use no memo';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import * as z from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -12,25 +15,11 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-
-const formSchema = z.object({
-   name: z.string().min(2, {
-      message: 'Name must be at least 2 characters.',
-   }),
-   email: z.string().email({
-      message: 'Please enter a valid email address.',
-   }),
-   phone: z.string().min(10, {
-      message: 'Please enter a valid phone number.',
-   }),
-   message: z.string().min(10, {
-      message: 'Message must be at least 10 characters.',
-   }),
-});
+import { contactFormSchema } from '@/lib/schemas';
 
 export default function ContactForm() {
-   const form = useForm<z.infer<typeof formSchema>>({
-      resolver: zodResolver(formSchema),
+   const form = useForm<z.infer<typeof contactFormSchema>>({
+      resolver: zodResolver(contactFormSchema),
       defaultValues: {
          name: '',
          email: '',
@@ -39,10 +28,16 @@ export default function ContactForm() {
       },
    });
 
-   function onSubmit(values: z.infer<typeof formSchema>) {
-      console.log(values);
-
-      // Handle form submission
+   function onSubmit() {
+      try {
+         toast.success(
+            'Thank you for contacting us! We will get back to you soon.'
+         );
+         form.reset();
+      } catch (error) {
+         toast.error('Something went wrong. Please try again.');
+         console.error('Form error:', error);
+      }
    }
 
    return (
