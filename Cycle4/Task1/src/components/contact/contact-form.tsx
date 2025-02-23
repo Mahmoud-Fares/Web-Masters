@@ -49,9 +49,9 @@ export default function ContactForm() {
       <Form {...form}>
          <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4 rounded p-8 shadow"
+            className="space-y-4 rounded p-8 shadow lg:col-span-2"
          >
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 lg:grid-cols-3">
                <FormField
                   control={form.control}
                   name="name"
@@ -117,8 +117,8 @@ export default function ContactForm() {
                )}
             />
 
-            <div className="md:text-right">
-               <Button type="submit" className="w-full md:w-auto">
+            <div className="lg:text-right">
+               <Button type="submit" className="w-full lg:w-auto">
                   Send Message
                </Button>
             </div>

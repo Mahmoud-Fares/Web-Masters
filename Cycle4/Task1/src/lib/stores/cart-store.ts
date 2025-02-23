@@ -98,7 +98,7 @@ export const useCartStore = create<CartState>()(
                   toast.info(
                      `Quantity for ${item.name} updated to ${newQuantity}!`
                   );
-               else toast.error(`Item not found in the cart!`);
+               else toast.error('Item not found in the cart!');
 
                return {
                   items: state.items.map((item) =>

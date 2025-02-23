@@ -6,9 +6,9 @@ import {
 } from '@/components/buttons/quantity-button';
 import { useCartStore } from '@/lib/stores/cart-store';
 
-import { CardItem } from './types';
+import { CartItem } from '../types';
 
-export default function CartQuantitySelector({ item }: { item: CardItem }) {
+export default function CartQuantitySelector({ item }: { item: CartItem }) {
    const updateQuantity = useCartStore((state) => state.updateQuantity);
 
    return (

@@ -49,7 +49,10 @@ export default function BuyForm({ product }: { product: Product }) {
                onQuantityChange={setQuantity}
             />
 
-            <Button className="flex-1 rounded-md" onClick={handleAddToCart}>
+            <Button
+               className="flex-1 rounded-md py-2"
+               onClick={handleAddToCart}
+            >
                Buy Now
             </Button>
 

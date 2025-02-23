@@ -7,11 +7,11 @@ export default function RelatedItemsSection() {
    const products = PRODUCTS.slice(0, 4);
 
    return (
-      <section className="py-10">
+      <section className="py-section">
          <Container>
             <SectionTitle text="Related Item" />
 
-            <ProductList products={products} className="my-10" />
+            <ProductList products={products} className="pt-section" />
          </Container>
       </section>
    );

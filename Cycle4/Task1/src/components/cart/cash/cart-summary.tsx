@@ -9,7 +9,7 @@ import {
 import { CartItem, useCartStore } from '@/lib/stores/cart-store';
 import { cn } from '@/lib/utils';
 
-import { CartState } from './types';
+import { CartState } from '../types';
 
 type CartSummaryProps = {
    onCheckout: () => void;
@@ -33,6 +33,11 @@ export function CartSummary({ onCheckout, className }: CartSummaryProps) {
    const { items } = useCartStore();
 
    const cart = calculateTotals(items);
+   const summaryItems = [
+      { label: 'Subtotal:', value: `$${cart.subtotal}` },
+      { label: 'Shipping:', value: cart.shipping },
+      { label: 'Total:', value: `$${cart.total}` },
+   ];
 
    return (
       <Card className={cn('w-full rounded bg-background', className)}>
@@ -41,20 +46,12 @@ export function CartSummary({ onCheckout, className }: CartSummaryProps) {
          </CardHeader>
 
          <CardContent className="grid gap-4 divide-y">
-            <div className="flex justify-between pt-4">
-               <span>Subtotal:</span>
-               <span className="font-medium">${cart.subtotal}</span>
-            </div>
-
-            <div className="flex justify-between pt-4">
-               <span>Shipping:</span>
-               <span className="font-medium">{cart.shipping}</span>
-            </div>
-
-            <div className="flex justify-between pt-4">
-               <span>Total:</span>
-               <span className="font-medium">${cart.total}</span>
-            </div>
+            {summaryItems.map((item, index) => (
+               <div className="flex justify-between pt-4" key={index}>
+                  <span>{item.label}</span>
+                  <span className="font-medium">{item.value}</span>
+               </div>
+            ))}
          </CardContent>
 
          <CardFooter>

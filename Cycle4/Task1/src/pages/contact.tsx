@@ -4,7 +4,7 @@ import Container from '@/components/container';
 
 export default function ContactPage() {
    return (
-      <Container className="grid gap-8 py-20 md:grid-cols-2">
+      <Container className="mb-section grid gap-8 py-section lg:grid-cols-3">
          <ContactDetails />
          <ContactForm />
       </Container>

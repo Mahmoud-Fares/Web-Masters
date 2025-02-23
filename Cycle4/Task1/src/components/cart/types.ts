@@ -1,11 +1,11 @@
 import { Product } from '@/lib/mock-data';
 
-export type CardItem = Product & {
+export type CartItem = Product & {
    quantity: number;
 };
 
 export type CartState = {
-   items: CardItem[];
+   items: CartItem[];
    subtotal: number;
    shipping: string;
    total: number;

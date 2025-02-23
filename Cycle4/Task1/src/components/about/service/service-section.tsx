@@ -25,15 +25,17 @@ const SERVICES = [
 
 export default function ServiceSection() {
    return (
-      <Container className="grid grid-cols-1 gap-10 pb-20 pt-16 md:grid-cols-2 lg:grid-cols-3">
-         {SERVICES.map((service) => (
-            <ServiceComponent
-               key={service.title}
-               svg={service.svg}
-               title={service.title}
-               description={service.description}
-            />
-         ))}
-      </Container>
+      <section className="mb-section py-section">
+         <Container className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+            {SERVICES.map((service) => (
+               <ServiceComponent
+                  key={service.title}
+                  svg={service.svg}
+                  title={service.title}
+                  description={service.description}
+               />
+            ))}
+         </Container>
+      </section>
    );
 }

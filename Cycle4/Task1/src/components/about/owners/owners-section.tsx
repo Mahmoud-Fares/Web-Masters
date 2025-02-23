@@ -5,7 +5,7 @@ import Pagination from './pagination';
 
 export default function OwnersSection() {
    return (
-      <section className="py-16">
+      <section className="py-section">
          <Container>
             <OwnersComponent />
 

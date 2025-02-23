@@ -7,15 +7,15 @@ import { PRODUCTS } from '@/lib/mock-data';
 export default function RecommendationSection() {
    const products = PRODUCTS.slice(0, 4);
    return (
-      <Container>
-         <div className="flex items-start justify-between">
-            <SectionTitle text="Wishlist">Just For You</SectionTitle>
-            <Button className="px-8" variant={'outline'}>
-               See All
-            </Button>
-         </div>
+      <section className="py-section">
+         <Container>
+            <div className="flex items-start justify-between">
+               <SectionTitle text="Recommendations">Just For You</SectionTitle>
+               <Button variant={'outline'}>See All</Button>
+            </div>
 
-         <ProductList products={products} className="my-10" />
-      </Container>
+            <ProductList products={products} className="py-section" />
+         </Container>
+      </section>
    );
 }

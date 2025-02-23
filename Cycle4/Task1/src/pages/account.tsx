@@ -4,7 +4,7 @@ import Container from '@/components/container';
 
 export default function AccountPage() {
    return (
-      <Container className="grid gap-8 py-20 md:grid-cols-[240px,1fr]">
+      <Container className="mb-section grid gap-8 py-section md:grid-cols-[240px,1fr]">
          <AccountSidebar />
 
          <EditProfileForm />

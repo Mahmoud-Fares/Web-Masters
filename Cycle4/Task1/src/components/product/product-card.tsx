@@ -14,7 +14,7 @@ export default function ProductCard({
    icons = ['favourite', 'view'],
 }: ProductCardProps) {
    return (
-      <div className="flex max-h-[320px] flex-col">
+      <div className="group flex max-h-[320px] flex-col">
          <CardThumbnail product={product} icons={icons} />
          <CardDetails product={product} />
       </div>

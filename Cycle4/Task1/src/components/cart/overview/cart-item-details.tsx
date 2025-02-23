@@ -4,11 +4,11 @@ import { Button } from '@/components/ui/button';
 import { useCartStore } from '@/lib/stores/cart-store';
 import { cn } from '@/lib/utils';
 
-import { CardItem } from './types';
+import { CartItem } from '../types';
 
 type CartItemDetailsProps = {
    className?: string;
-   item: CardItem;
+   item: CartItem;
 };
 
 export default function CartItemDetails({

@@ -4,7 +4,7 @@ import RelatedItemsSection from '@/components/product/related-items-section';
 
 export default function ProductPage() {
    return (
-      <Container>
+      <Container className="mb-section">
          <CurrentProduct />
 
          <RelatedItemsSection />

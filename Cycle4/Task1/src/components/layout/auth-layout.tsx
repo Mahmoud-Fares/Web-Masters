@@ -13,7 +13,7 @@ export function AuthLayout() {
    }, [currentUser, navigate]);
 
    return (
-      <div className="flex min-h-screen py-12">
+      <div className="flex min-h-screen py-section">
          {/* Left side - Image */}
          <div className="hidden w-1/2 lg:block">
             <img

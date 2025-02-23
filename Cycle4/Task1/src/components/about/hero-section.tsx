@@ -2,7 +2,8 @@ import Container from '../container';
 
 export default function HeroSection() {
    return (
-      <section className="relative py-16">
+      // todo make this my-section and fix the layout chaos
+      <section className="relative py-section">
          <Container className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
             <HeroSectionContent />
 

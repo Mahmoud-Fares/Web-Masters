@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PRODUCTS } from '@/lib/mock-data';
 
-import { CouponForm } from '../cart/coupon-form';
+import { CouponForm } from '../cart/cash/coupon-form';
 import BillingItemsList from './billing-items-list';
 import PaymentMethod from './payment-method';
 import PricingSummary from './pricing-summary';
@@ -41,7 +41,7 @@ export function OrderSummary() {
                onApply={handleApplyCoupon}
             />
 
-            <Button className="w-fit rounded px-10" onClick={handlePlaceOrder}>
+            <Button className="w-fit rounded" onClick={handlePlaceOrder}>
                Place Order
             </Button>
          </CardContent>

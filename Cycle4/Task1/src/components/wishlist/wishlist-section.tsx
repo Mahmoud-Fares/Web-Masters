@@ -9,25 +9,33 @@ export default function WishlistSection() {
 
    if (products.length === 0)
       return (
-         <Container className="my-10">
-            <EmptyState
-               title="Your wishlist is empty"
-               description="Items added to your wishlist will appear here"
-            />
-         </Container>
+         <section>
+            <Container>
+               <EmptyState
+                  title="Your wishlist is empty"
+                  description="Items added to your wishlist will appear here"
+               />
+            </Container>
+         </section>
       );
 
    return (
-      <Container>
-         <div className="flex items-center justify-between">
-            <h2 className="font-medium">Wishlist ({products.length})</h2>
+      <section>
+         <Container>
+            <div className="flex items-center justify-between">
+               <h2 className="font-medium">Wishlist ({products.length})</h2>
 
-            <Button variant={'outline'} className="px-6 capitalize">
-               Move all to bag
-            </Button>
-         </div>
+               <Button variant={'outline'} className="capitalize">
+                  Move all to bag
+               </Button>
+            </div>
 
-         <ProductList products={products} icons={['trash']} className="my-10" />
-      </Container>
+            <ProductList
+               products={products}
+               icons={['trash']}
+               className="my-section"
+            />
+         </Container>
+      </section>
    );
 }

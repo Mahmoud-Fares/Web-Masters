@@ -80,6 +80,9 @@ export default {
             // hoverButton: '#E07575', // primary, accent hover
             // hoverButton2: '#A0BCE0', // not used >> neglect
          },
+         spacing: {
+            section: '3rem',
+         },
       },
    },
    plugins: [require('tailwindcss-animate')],
