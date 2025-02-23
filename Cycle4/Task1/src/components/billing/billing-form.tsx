@@ -13,31 +13,17 @@ import {
    FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-
-const formSchema = z.object({
-   firstName: z.string().min(2, 'First name must be at least 2 characters'),
-   companyName: z.string().optional(),
-   streetAddress: z
-      .string()
-      .min(5, 'Street address must be at least 5 characters'),
-   apartment: z.string().optional(),
-   townCity: z.string().min(2, 'Town/City must be at least 2 characters'),
-   phoneNumber: z
-      .string()
-      .min(10, 'Phone number must be at least 10 characters'),
-   emailAddress: z.string().email('Invalid email address'),
-   saveInformation: z.boolean().default(false),
-});
+import { checkoutSchema } from '@/lib/validation/checkout-validation';
 
 export default function BillingForm() {
-   const form = useForm<z.infer<typeof formSchema>>({
-      resolver: zodResolver(formSchema),
+   const form = useForm<z.infer<typeof checkoutSchema>>({
+      resolver: zodResolver(checkoutSchema),
       defaultValues: {
          saveInformation: false,
       },
    });
 
-   function onSubmit(values: z.infer<typeof formSchema>) {
+   function onSubmit(values: z.infer<typeof checkoutSchema>) {
       console.log(values);
    }
 

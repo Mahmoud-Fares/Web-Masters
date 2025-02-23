@@ -14,9 +14,9 @@ import {
    FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { loginSchema } from '@/lib/schemas';
 import { useUserStore } from '@/lib/stores/user-store';
 import { cn } from '@/lib/utils';
+import { loginSchema } from '@/lib/validation/login-schema';
 
 type FormData = z.infer<typeof loginSchema>;
 

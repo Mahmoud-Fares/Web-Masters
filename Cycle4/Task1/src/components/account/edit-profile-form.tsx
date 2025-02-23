@@ -14,8 +14,8 @@ import {
    FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { editProfileSchema } from '@/lib/schemas';
 import { useUserStore } from '@/lib/stores/user-store';
+import { editProfileSchema } from '@/lib/validation/edit-profile-schema';
 
 export function EditProfileForm() {
    const currentUser = useUserStore((state) => state.currentUser);
