@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -39,24 +40,33 @@ export const useCartStore = create<CartState>()(
                );
 
                if (existingItem) {
-                  // Item is already in the cart, update it with the new values
-                  console.log('existingItem', existingItem);
+                  const updatedItem = {
+                     ...existingItem,
+                     quantity: quantity || existingItem.quantity + 1,
+                     selectedColor: color,
+                     selectedSize: size,
+                  };
+
+                  if (existingItem.quantity !== quantity)
+                     toast.info(
+                        `Quantity for ${existingItem.name} updated to ${quantity || existingItem.quantity + 1}!`
+                     );
+
+                  if (existingItem.selectedColor !== color)
+                     toast.info(`Color changed to ${color}!`);
+
+                  if (existingItem.selectedSize !== size)
+                     toast.info(`Size changed to ${size}!`);
+
                   return {
                      items: state.items.map((item) =>
-                        item.id === product.id
-                           ? {
-                                ...item,
-                                quantity: quantity || item.quantity + 1, // Add selected quantity or increment by 1
-                                // in case of changing the size or the color
-                                selectedColor: color,
-                                selectedSize: size,
-                             }
-                           : item
+                        item.id === product.id ? updatedItem : item
                      ),
                   };
                }
 
                // New item add it to the cart
+               toast.success(`${product.name} has been added to your cart!`);
                return {
                   items: [
                      ...state.items,
@@ -71,18 +81,33 @@ export const useCartStore = create<CartState>()(
             }),
 
          removeItem: (productId) =>
-            set((state) => ({
-               items: state.items.filter((item) => item.id !== productId),
-            })),
+            set((state) => {
+               const item = state.items.find((item) => item.id === productId);
+               if (item) {
+                  toast.info(`${item.name} has been removed from your cart!`);
+               }
+               return {
+                  items: state.items.filter((item) => item.id !== productId),
+               };
+            }),
 
          updateQuantity: (productId, newQuantity) =>
-            set((state) => ({
-               items: state.items.map((item) =>
-                  item.id === productId
-                     ? { ...item, quantity: Math.max(1, newQuantity) }
-                     : item
-               ),
-            })),
+            set((state) => {
+               const item = state.items.find((item) => item.id === productId);
+               if (item)
+                  toast.info(
+                     `Quantity for ${item.name} updated to ${newQuantity}!`
+                  );
+               else toast.error(`Item not found in the cart!`);
+
+               return {
+                  items: state.items.map((item) =>
+                     item.id === productId
+                        ? { ...item, quantity: Math.max(1, newQuantity) }
+                        : item
+                  ),
+               };
+            }),
 
          clearCart: () => set({ items: [] }),
       }),
