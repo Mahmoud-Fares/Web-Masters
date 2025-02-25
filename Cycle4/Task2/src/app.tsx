@@ -1,6 +1,7 @@
+import { Container } from '@/components/container';
 import { CurrentWeather } from '@/components/current-weather';
-import { WeatherDetails } from '@/components/weather-details';
-import { WeatherForecast } from '@/components/weather-forecast';
+import { WeatherForecast } from '@/components/forecast/weather-forecast';
+import { WeatherDetails } from '@/components/weather-details/weather-details';
 import { WeatherHeader } from '@/components/weather-header';
 import { weatherData } from '@/data/mock-weather';
 import { useDateTime } from '@/hooks/use-date-time';
@@ -14,25 +15,20 @@ export default function App() {
    };
 
    return (
-      <div className="bg-background min-h-screen p-4 text-white md:p-8">
-         <div className="mx-auto max-w-6xl">
-            <div className="grid gap-6 md:grid-cols-[1fr_400px]">
-               <div className="space-y-4">
-                  <div className="flex h-full flex-col space-y-4">
-                     <WeatherHeader onSearch={handleSearch} />
-                     <CurrentWeather
-                        weather={weatherData}
-                        dateTime={dateTime}
-                     />
-                  </div>
-               </div>
+      <div className="bg-background text-foreground min-h-screen p-4 md:p-8">
+         <Container>
+            <main className="grid gap-6 lg:grid-cols-2">
+               <section className="bg-card flex h-full flex-col gap-4 p-4">
+                  <WeatherHeader onSearch={handleSearch} />
+                  <CurrentWeather weather={weatherData} dateTime={dateTime} />
+               </section>
 
-               <div className="space-y-6">
+               <section className="flex flex-col gap-6">
                   <WeatherDetails weather={weatherData} />
                   <WeatherForecast forecast={weatherData.forecast} />
-               </div>
-            </div>
-         </div>
+               </section>
+            </main>
+         </Container>
       </div>
    );
 }

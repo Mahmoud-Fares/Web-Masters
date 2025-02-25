@@ -1,18 +1,18 @@
 export type WeatherCondition =
-   | "Storm"
-   | "Rain"
-   | "Partly cloudy"
-   | "Cloudy"
-   | "Sunny";
+   | 'Storm'
+   | 'Rain'
+   | 'Partly cloudy'
+   | 'Cloudy'
+   | 'Sunny';
 
-export interface ForecastDay {
+export type ForecastDay = {
    day: string;
    temp: number;
    minTemp: number;
    condition: WeatherCondition;
-}
+};
 
-export interface WeatherData {
+export type WeatherData = {
    city: string;
    state: string;
    currentTemp: number;
@@ -25,4 +25,4 @@ export interface WeatherData {
    humidity: number;
    uvIndex: number;
    forecast: ForecastDay[];
-}
+};
