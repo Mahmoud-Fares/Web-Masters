@@ -9,10 +9,6 @@ import { useCartStore } from '@/lib/stores/cart-store';
 export default function CartPage() {
    const items = useCartStore((state) => state.items);
 
-   const handleApplyCoupon = (code: string) => {
-      console.log('Applying coupon:', code);
-   };
-
    const handleCheckout = () => {
       console.log('Proceeding to checkout');
    };
@@ -34,7 +30,6 @@ export default function CartPage() {
 
          <CartCashSection
             className="py-section"
-            handleApplyCoupon={handleApplyCoupon}
             handleCheckout={handleCheckout}
          />
       </Container>

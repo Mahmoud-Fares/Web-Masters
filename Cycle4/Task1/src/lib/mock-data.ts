@@ -1,3 +1,4 @@
+import { Coupon } from '../types/cart-types';
 import { User } from './stores/user-store';
 
 export interface Product {
@@ -165,5 +166,30 @@ export const USERS: User[] = [
       email: 'email@email.com',
       address: 'Los Angeles, 90001, United State',
       password: 'Admin1234',
+   },
+];
+
+export const VALID_COUPONS: Coupon[] = [
+   {
+      code: 'SAVE10',
+      type: 'percentage',
+      value: 10,
+      minPurchase: 0,
+      isActive: true,
+   },
+   {
+      code: 'SAVE20',
+      type: 'percentage',
+      value: 20,
+      minPurchase: 100,
+      maxDiscount: 700,
+      isActive: true,
+   },
+   {
+      code: 'FIXED500',
+      type: 'fixed',
+      value: 500,
+      minPurchase: 150,
+      isActive: true,
    },
 ];

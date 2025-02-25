@@ -4,12 +4,10 @@ import { CartSummary } from './cash/cart-summary';
 import { CouponForm } from './cash/coupon-form';
 
 type CartCashSectionProps = {
-   handleApplyCoupon: (code: string) => void;
    handleCheckout: () => void;
    className?: string;
 };
 export default function CartCashSection({
-   handleApplyCoupon,
    handleCheckout,
    className,
 }: CartCashSectionProps) {
@@ -20,10 +18,7 @@ export default function CartCashSection({
             className
          )}
       >
-         <CouponForm
-            className="flex-1 content-start"
-            onApply={handleApplyCoupon}
-         />
+         <CouponForm className="flex-1 content-start" />
 
          <CartSummary
             className="w-full lg:max-w-md"

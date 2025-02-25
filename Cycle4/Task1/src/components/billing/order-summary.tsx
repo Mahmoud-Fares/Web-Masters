@@ -14,10 +14,6 @@ const products = PRODUCTS.slice(0, 2);
 export function OrderSummary() {
    const [paymentMethod, setPaymentMethod] = useState('bank');
 
-   const handleApplyCoupon = (code: string) => {
-      console.log('Applying coupon:', code);
-   };
-
    const handlePlaceOrder = () => {
       // Handle order placement here
       console.log('Placing order with payment method:', paymentMethod);
@@ -36,10 +32,7 @@ export function OrderSummary() {
 
             <PaymentMethod setPaymentMethod={setPaymentMethod} />
 
-            <CouponForm
-               className="gap-4 md:flex-nowrap md:justify-normal"
-               onApply={handleApplyCoupon}
-            />
+            <CouponForm className="gap-4 md:flex-nowrap md:justify-normal" />
 
             <Button className="w-fit rounded" onClick={handlePlaceOrder}>
                Place Order
