@@ -1,4 +1,4 @@
-import { CartItem } from '@/lib/stores/cart-store';
+import { CartItem } from '@/types/cart-types';
 
 import CartItemDetails from './cart-item-details';
 import CartQuantitySelector from './cart-quantity-selector';

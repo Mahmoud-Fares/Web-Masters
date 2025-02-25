@@ -3,13 +3,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { Product, VALID_COUPONS } from '@/lib/mock-data';
-import { AppliedCoupon } from '@/types/cart-types';
-
-export type CartItem = Product & {
-   quantity: number;
-   selectedColor?: string;
-   selectedSize?: string;
-};
+import { AppliedCoupon, CartItem } from '@/types/cart-types';
 
 type addItemProps = {
    product: Product;

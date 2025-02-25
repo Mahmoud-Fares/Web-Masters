@@ -6,9 +6,9 @@ import {
    CardHeader,
    CardTitle,
 } from '@/components/ui/card';
-import { CartItem, useCartStore } from '@/lib/stores/cart-store';
+import { useCartStore } from '@/lib/stores/cart-store';
 import { cn } from '@/lib/utils';
-import { CartState } from '@/types/cart-types';
+import { CartItem, CartState } from '@/types/cart-types';
 
 type CartSummaryProps = {
    onCheckout: () => void;

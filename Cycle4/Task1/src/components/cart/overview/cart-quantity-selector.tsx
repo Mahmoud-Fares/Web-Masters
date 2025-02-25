@@ -5,8 +5,7 @@ import {
    default as IncrementButton,
 } from '@/components/buttons/quantity-button';
 import { useCartStore } from '@/lib/stores/cart-store';
-
-import { CartItem } from '../types';
+import { CartItem } from '@/types/cart-types';
 
 export default function CartQuantitySelector({ item }: { item: CartItem }) {
    const updateQuantity = useCartStore((state) => state.updateQuantity);

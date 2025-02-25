@@ -18,6 +18,8 @@ export type AppliedCoupon = Coupon & {
 
 export type CartItem = Product & {
    quantity: number;
+   selectedColor?: string;
+   selectedSize?: string;
 };
 
 export type CartState = {
