@@ -9,12 +9,12 @@ type WeatherHeaderProps = {
 export function WeatherHeader({ onSearch }: WeatherHeaderProps) {
    return (
       <div className="flex items-center gap-2">
-         <Logo />
+         <Logo className="bg-accent aspect-square size-10 p-2" />
 
          <Input
             type="search"
             placeholder="Search location..."
-            className="bg-accent placeholder:text-accent-foreground text-foreground border-0"
+            className="search-input h-10"
             onChange={(e) => onSearch(e.target.value)}
          />
       </div>

@@ -14,7 +14,7 @@ export function WeatherForecast({ forecast }: WeatherForecastProps) {
             <CardTitle>5-day forecast</CardTitle>
          </CardHeader>
 
-         <CardContent className="grid grid-cols-5 gap-2 text-center">
+         <CardContent className="grid grid-cols-3 gap-4 gap-y-6 text-center md:grid-cols-5">
             {forecast.map((day, index) => (
                <div key={index} className="grid grid-cols-subgrid gap-4">
                   <div className="text-sm font-medium">{day.day}</div>

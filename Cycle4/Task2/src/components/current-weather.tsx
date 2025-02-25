@@ -19,7 +19,7 @@ export function CurrentWeather({ weather, dateTime }: CurrentWeatherProps) {
             }}
          />
          <div className="absolute inset-0 z-10" />
-         <div className="relative z-20 flex h-full min-h-[400px] flex-col justify-between">
+         <div className="relative z-20 flex h-full min-h-[300px] flex-col justify-between lg:min-h-[400px]">
             <div className="flex items-start justify-between">
                <div>
                   <h1 className="text-2xl font-bold">
@@ -30,7 +30,7 @@ export function CurrentWeather({ weather, dateTime }: CurrentWeatherProps) {
                <div className="text-xl">{dateTime.currentTime}</div>
             </div>
 
-            <div className="mt-auto flex items-end justify-between">
+            <div className="mt-8 flex flex-wrap-reverse items-end justify-between sm:mt-auto">
                <div>
                   <div className="mb-2 text-7xl font-bold">
                      {weather.currentTemp}°<span className="text-5xl">C</span>
