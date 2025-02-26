@@ -15,10 +15,12 @@ type addItemProps = {
 type CartState = {
    items: CartItem[];
    appliedCoupon: AppliedCoupon | null;
+
    addItem: ({ product, quantity, color, size }: addItemProps) => void;
    removeItem: (productId: number) => void;
    updateQuantity: (productId: number, newQuantity: number) => void;
    clearCart: () => void;
+
    applyCoupon: (code: string) => void;
    removeCoupon: () => void;
    getSubtotal: () => number;

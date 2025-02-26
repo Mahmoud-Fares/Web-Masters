@@ -28,7 +28,7 @@ export function OrderSummary() {
          <CardContent className="space-y-4">
             <BillingItemsList products={products} />
 
-            <PricingSummary products={products} />
+            <PricingSummary className="gap-2 *:py-2" />
 
             <PaymentMethod setPaymentMethod={setPaymentMethod} />
 

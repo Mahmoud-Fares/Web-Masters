@@ -21,11 +21,3 @@ export type CartItem = Product & {
    selectedColor?: string;
    selectedSize?: string;
 };
-
-export type CartState = {
-   items: CartItem[];
-   subtotal: number;
-   shipping: string;
-   discount?: number;
-   total: number;
-};

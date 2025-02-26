@@ -1,32 +1,76 @@
-import { Product } from '@/lib/mock-data';
+import { useCartStore } from '@/lib/stores/cart-store';
 import { cn } from '@/lib/utils';
 
-type PricingSummaryProps = {
-   className?: string;
-   products: Product[];
-};
+export default function PricingSummary({ className }: { className?: string }) {
+   // todo: add shipping logic
+   const { appliedCoupon, getSubtotal } = useCartStore();
 
-export default function PricingSummary({ products }: PricingSummaryProps) {
-   const subtotal = products.reduce((acc, product) => acc + product.price, 0);
-   const shipping = 0;
-   const total = subtotal + shipping;
+   const PricingSummaryItems = [
+      {
+         label: 'Subtotal:',
+         value: `$${getSubtotal().toFixed(2)}`,
+      },
+      { label: 'Shipping:', value: 'Free' },
+      ...(appliedCoupon
+         ? [
+              {
+                 label: 'Discount:',
+                 value: <DiscountDisplay />,
+                 className: 'text-green-600',
+              },
+           ]
+         : []),
+      {
+         label: 'Total:',
+         value: <PriceDisplay />,
+      },
+   ];
 
    return (
-      <div className={cn('space-y-2 divide-y *:flex *:justify-between *:py-2')}>
-         <div>
-            <span>Subtotal:</span>
-            <span>${subtotal}</span>
-         </div>
-
-         <div>
-            <span>Shipping:</span>
-            <span>{shipping === 0 ? 'Free' : `$${shipping}`}</span>
-         </div>
-
-         <div className="font-semibold">
-            <span>Total:</span>
-            <span>${total}</span>
-         </div>
+      <div className={cn('grid divide-y', className)}>
+         {PricingSummaryItems.map((item, index) => (
+            <div className="flex justify-between" key={index}>
+               <span>{item.label}</span>
+               <span className={item.className}>{item.value}</span>
+            </div>
+         ))}
       </div>
+   );
+}
+
+function PriceDisplay() {
+   const { getSubtotal, getTotal, appliedCoupon } = useCartStore();
+   const subtotal = getSubtotal();
+   const total = getTotal();
+
+   return (
+      <>
+         {appliedCoupon ? (
+            <>
+               <span className="pr-2 font-medium text-primary">
+                  ${total.toFixed(2)}
+               </span>
+
+               <span className="text-muted-foreground line-through">
+                  ${subtotal.toFixed(2)}
+               </span>
+            </>
+         ) : (
+            <span className="font-medium">${subtotal.toFixed(2)}</span>
+         )}
+      </>
+   );
+}
+
+function DiscountDisplay() {
+   const { appliedCoupon, getDiscount } = useCartStore();
+
+   return (
+      <>
+         -${getDiscount().toFixed(2)}
+         {appliedCoupon?.type === 'percentage' && (
+            <span> ({appliedCoupon.value}% off)</span>
+         )}
+      </>
    );
 }
