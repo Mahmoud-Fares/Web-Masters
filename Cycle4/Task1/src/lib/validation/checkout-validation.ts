@@ -18,4 +18,5 @@ export const checkoutSchema = z.object({
    phoneNumber: phoneValidation,
    emailAddress: emailValidation,
    saveInformation: z.boolean().default(false),
+   paymentMethod: z.enum(['bank', 'cash']).default('bank'),
 });

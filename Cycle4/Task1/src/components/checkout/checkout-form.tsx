@@ -1,6 +1,7 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
+'use no memo';
+
+import type { UseFormReturn } from 'react-hook-form';
+import type { z } from 'zod';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -13,38 +14,28 @@ import {
    FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { checkoutSchema } from '@/lib/validation/checkout-validation';
+import type { checkoutSchema } from '@/lib/validation/checkout-validation';
 
-export default function BillingForm() {
-   const form = useForm<z.infer<typeof checkoutSchema>>({
-      resolver: zodResolver(checkoutSchema),
-      defaultValues: {
-         saveInformation: false,
-      },
-   });
+type CheckoutFormProps = {
+   form: UseFormReturn<z.infer<typeof checkoutSchema>>;
+};
 
-   function onSubmit(values: z.infer<typeof checkoutSchema>) {
-      console.log(values);
-   }
-
+export default function CheckoutForm({ form }: CheckoutFormProps) {
    return (
       <Card className="w-full border-none bg-background shadow-none">
          <CardHeader className="p-0">
-            <CardTitle className="sr-only">Billing Details Form</CardTitle>
+            <CardTitle className="sr-only">Checkout Details Form</CardTitle>
          </CardHeader>
 
          <CardContent className="p-0 text-muted-foreground">
             <Form {...form}>
-               <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-4"
-               >
+               <form className="space-y-4">
                   <FormField
                      control={form.control}
                      name="firstName"
                      render={({ field }) => (
                         <FormItem>
-                           <FormLabel>First Name*</FormLabel>
+                           <FormLabel>First Name *</FormLabel>
                            <FormControl>
                               <Input {...field} />
                            </FormControl>
@@ -72,7 +63,7 @@ export default function BillingForm() {
                      name="streetAddress"
                      render={({ field }) => (
                         <FormItem>
-                           <FormLabel>Street Address*</FormLabel>
+                           <FormLabel>Street Address *</FormLabel>
                            <FormControl>
                               <Input {...field} />
                            </FormControl>
@@ -102,7 +93,7 @@ export default function BillingForm() {
                      name="townCity"
                      render={({ field }) => (
                         <FormItem>
-                           <FormLabel>Town/City*</FormLabel>
+                           <FormLabel>Town/City *</FormLabel>
                            <FormControl>
                               <Input {...field} />
                            </FormControl>
@@ -116,7 +107,7 @@ export default function BillingForm() {
                      name="phoneNumber"
                      render={({ field }) => (
                         <FormItem>
-                           <FormLabel>Phone Number*</FormLabel>
+                           <FormLabel>Phone Number *</FormLabel>
                            <FormControl>
                               <Input {...field} />
                            </FormControl>
@@ -130,7 +121,7 @@ export default function BillingForm() {
                      name="emailAddress"
                      render={({ field }) => (
                         <FormItem>
-                           <FormLabel>Email Address*</FormLabel>
+                           <FormLabel>Email Address *</FormLabel>
                            <FormControl>
                               <Input {...field} />
                            </FormControl>

@@ -4,13 +4,9 @@ import { CartSummary } from './cash/cart-summary';
 import { CouponForm } from './cash/coupon-form';
 
 type CartCashSectionProps = {
-   handleCheckout: () => void;
    className?: string;
 };
-export default function CartCashSection({
-   handleCheckout,
-   className,
-}: CartCashSectionProps) {
+export default function CartCashSection({ className }: CartCashSectionProps) {
    return (
       <section
          className={cn(
@@ -20,10 +16,7 @@ export default function CartCashSection({
       >
          <CouponForm className="flex-1 content-start" />
 
-         <CartSummary
-            className="w-full lg:max-w-md"
-            onCheckout={handleCheckout}
-         />
+         <CartSummary className="w-full lg:max-w-md" />
       </section>
    );
 }

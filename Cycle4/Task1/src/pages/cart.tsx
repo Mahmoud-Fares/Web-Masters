@@ -9,10 +9,6 @@ import { useCartStore } from '@/lib/stores/cart-store';
 export default function CartPage() {
    const items = useCartStore((state) => state.items);
 
-   const handleCheckout = () => {
-      console.log('Proceeding to checkout');
-   };
-
    if (items.length === 0)
       return (
          <Container className="py-section">
@@ -28,10 +24,7 @@ export default function CartPage() {
       <Container className="py-section">
          <CartItemsOverviewSection className="pb-section" />
 
-         <CartCashSection
-            className="py-section"
-            handleCheckout={handleCheckout}
-         />
+         <CartCashSection className="py-section" />
       </Container>
    );
 }

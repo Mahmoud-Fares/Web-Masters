@@ -6,8 +6,8 @@ import MainLayout from '@/components/layout/main-layout';
 import ProtectedLayout from '@/components/layout/protected-layout';
 import AboutPage from '@/pages/about';
 import AccountPage from '@/pages/account';
-import BillingPage from '@/pages/billing';
 import CartPage from '@/pages/cart';
+import CheckoutPage from '@/pages/checkout';
 import ContactPage from '@/pages/contact';
 import Home from '@/pages/home';
 import LoginPage from '@/pages/login';
@@ -55,8 +55,8 @@ export const router = createBrowserRouter([
             element: <CartPage />,
          },
          {
-            path: 'billing',
-            element: <BillingPage />,
+            path: 'cart/checkout',
+            element: <CheckoutPage />,
          },
          {
             path: 'account',
