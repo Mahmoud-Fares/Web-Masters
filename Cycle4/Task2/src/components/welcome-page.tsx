@@ -1,11 +1,7 @@
 import { SearchInput } from './search-input';
 import { WelcomeHeader } from './welcome/welcome-header';
 
-type WelcomePageProps = {
-   onLocationSelect: (location: string) => void;
-};
-
-export function WelcomePage({ onLocationSelect }: WelcomePageProps) {
+export function WelcomePage() {
    return (
       <div className="bg-background text-foreground flex min-h-screen flex-col items-center pt-10">
          <WelcomeHeader />
@@ -19,7 +15,7 @@ export function WelcomePage({ onLocationSelect }: WelcomePageProps) {
                Choose a location to see the weather forecast
             </p>
 
-            <SearchInput onSearch={onLocationSelect} />
+            <SearchInput />
          </div>
       </div>
    );

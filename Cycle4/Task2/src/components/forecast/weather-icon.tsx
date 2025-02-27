@@ -7,6 +7,7 @@ type WeatherIconProps = {
    className?: string;
 };
 
+// todo better icons
 export function WeatherIcon({ condition, className }: WeatherIconProps) {
    switch (condition) {
       case 'Storm':
