@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useCartStore } from '@/lib/stores/cart-store';
+import { useCheckoutStore } from '@/lib/stores/checkout-store';
 import { cn } from '@/lib/utils';
 
 type CouponFormProps = {
@@ -11,7 +11,8 @@ type CouponFormProps = {
 
 export function CouponForm({ className }: CouponFormProps) {
    const [couponCode, setCouponCode] = useState('');
-   const { applyCoupon, appliedCoupon, removeCoupon } = useCartStore();
+   const { applyCoupon, appliedCoupon, removeCoupon, getDiscount } =
+      useCheckoutStore();
 
    const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
@@ -28,7 +29,7 @@ export function CouponForm({ className }: CouponFormProps) {
                      Applied Coupon: {appliedCoupon.code}
                   </p>
                   <p className="text-sm text-muted-foreground">
-                     Discount: ${appliedCoupon.discountAmount.toFixed(2)}
+                     Discount: ${getDiscount().toFixed(2)}
                   </p>
                </div>
                <Button variant="destructive" size="sm" onClick={removeCoupon}>

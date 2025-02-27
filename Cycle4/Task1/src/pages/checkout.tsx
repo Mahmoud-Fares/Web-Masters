@@ -2,39 +2,36 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
 import type { z } from 'zod';
 
 import CheckoutForm from '@/components/checkout/checkout-form';
 import { OrderSummary } from '@/components/checkout/order-summary';
 import Container from '@/components/container';
-import { useCartStore } from '@/lib/stores/cart-store';
+import { useCheckoutStore } from '@/lib/stores/checkout-store';
 import { checkoutSchema } from '@/lib/validation/checkout-validation';
 
 export default function CheckoutPage() {
+   const { savedUserInfo, placeOrder } = useCheckoutStore();
+
    const form = useForm<z.infer<typeof checkoutSchema>>({
       resolver: zodResolver(checkoutSchema),
       defaultValues: {
-         firstName: '',
-         companyName: '',
-         streetAddress: '',
-         apartment: '',
-         townCity: '',
-         phoneNumber: '',
-         emailAddress: '',
-         saveInformation: false,
-         paymentMethod: 'bank',
+         firstName: savedUserInfo?.firstName || '',
+         companyName: savedUserInfo?.companyName || '',
+         streetAddress: savedUserInfo?.streetAddress || '',
+         apartment: savedUserInfo?.apartment || '',
+         townCity: savedUserInfo?.townCity || '',
+         phoneNumber: savedUserInfo?.phoneNumber || '',
+         emailAddress: savedUserInfo?.emailAddress || '',
+         saveInformation: Boolean(savedUserInfo),
+         paymentMethod: savedUserInfo?.paymentMethod || 'bank',
       },
    });
 
-   const { clearCart, removeCoupon } = useCartStore();
-
    const handleSubmit = form.handleSubmit((values) => {
       console.log('Order details:', values);
-      clearCart();
-      removeCoupon();
-      toast.success('Order placed successfully!');
-      form.reset();
+      const success = placeOrder();
+      if (success) form.reset();
    });
 
    return (

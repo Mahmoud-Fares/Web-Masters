@@ -12,10 +12,6 @@ export type Coupon = {
    isActive: boolean;
 };
 
-export type AppliedCoupon = Coupon & {
-   discountAmount: number;
-};
-
 export type CartItem = Product & {
    quantity: number;
    selectedColor?: string;

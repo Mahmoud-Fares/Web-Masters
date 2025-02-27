@@ -1,9 +1,11 @@
 import { useCartStore } from '@/lib/stores/cart-store';
+import { useCheckoutStore } from '@/lib/stores/checkout-store';
 import { cn } from '@/lib/utils';
 
 export default function PricingSummary({ className }: { className?: string }) {
    // todo: add shipping logic
-   const { appliedCoupon, getSubtotal } = useCartStore();
+   const { getSubtotal } = useCartStore();
+   const { appliedCoupon } = useCheckoutStore();
 
    const PricingSummaryItems = [
       {
@@ -39,7 +41,8 @@ export default function PricingSummary({ className }: { className?: string }) {
 }
 
 function PriceDisplay() {
-   const { getSubtotal, getTotal, appliedCoupon } = useCartStore();
+   const { getSubtotal } = useCartStore();
+   const { appliedCoupon, getTotal } = useCheckoutStore();
    const subtotal = getSubtotal();
    const total = getTotal();
 
@@ -63,7 +66,7 @@ function PriceDisplay() {
 }
 
 function DiscountDisplay() {
-   const { appliedCoupon, getDiscount } = useCartStore();
+   const { appliedCoupon, getDiscount } = useCheckoutStore();
 
    return (
       <>

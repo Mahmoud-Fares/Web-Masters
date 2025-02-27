@@ -14,6 +14,7 @@ import {
    FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useCheckoutStore } from '@/lib/stores/checkout-store';
 import type { checkoutSchema } from '@/lib/validation/checkout-validation';
 
 type CheckoutFormProps = {
@@ -21,6 +22,8 @@ type CheckoutFormProps = {
 };
 
 export default function CheckoutForm({ form }: CheckoutFormProps) {
+   const { saveUserInfo, clearUserInfo } = useCheckoutStore();
+
    return (
       <Card className="w-full border-none bg-background shadow-none">
          <CardHeader className="p-0">
@@ -138,7 +141,14 @@ export default function CheckoutForm({ form }: CheckoutFormProps) {
                            <FormControl>
                               <Checkbox
                                  checked={field.value}
-                                 onCheckedChange={field.onChange}
+                                 onCheckedChange={(checked) => {
+                                    field.onChange(checked);
+                                    if (checked) {
+                                       saveUserInfo(form.getValues());
+                                    } else {
+                                       clearUserInfo();
+                                    }
+                                 }}
                               />
                            </FormControl>
                            <div className="space-y-1 leading-none">

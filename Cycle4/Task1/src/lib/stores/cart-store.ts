@@ -2,8 +2,8 @@ import { toast } from 'sonner';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { Product, VALID_COUPONS } from '@/lib/mock-data';
-import { AppliedCoupon, CartItem } from '@/types/cart-types';
+import { Product } from '@/lib/mock-data';
+import { CartItem } from '@/types/cart-types';
 
 type addItemProps = {
    product: Product;
@@ -14,25 +14,18 @@ type addItemProps = {
 
 type CartState = {
    items: CartItem[];
-   appliedCoupon: AppliedCoupon | null;
 
    addItem: ({ product, quantity, color, size }: addItemProps) => void;
    removeItem: (productId: number) => void;
    updateQuantity: (productId: number, newQuantity: number) => void;
    clearCart: () => void;
-
-   applyCoupon: (code: string) => void;
-   removeCoupon: () => void;
    getSubtotal: () => number;
-   getDiscount: () => number;
-   getTotal: () => number;
 };
 
 export const useCartStore = create<CartState>()(
    persist(
       (set, get) => ({
          items: [],
-         appliedCoupon: null,
 
          addItem: ({
             product,
@@ -115,7 +108,7 @@ export const useCartStore = create<CartState>()(
                };
             }),
 
-         clearCart: () => set({ items: [], appliedCoupon: null }),
+         clearCart: () => set({ items: [] }),
 
          getSubtotal: () => {
             const state = get();
@@ -124,66 +117,11 @@ export const useCartStore = create<CartState>()(
                0
             );
          },
-
-         applyCoupon: (code: string) => {
-            const state = get();
-            const subtotal = state.getSubtotal();
-            const coupon = VALID_COUPONS.find(
-               (c) => c.code === code && c.isActive
-            );
-
-            if (!coupon) {
-               toast.error('Invalid or expired coupon code!');
-               return;
-            }
-
-            if (coupon.minPurchase && subtotal < coupon.minPurchase) {
-               toast.error(
-                  `Minimum purchase amount of $${coupon.minPurchase} required for this coupon!`
-               );
-               return;
-            }
-
-            let discountAmount = 0;
-            if (coupon.type === 'percentage') {
-               discountAmount = (subtotal * coupon.value) / 100;
-               if (coupon.maxDiscount) {
-                  discountAmount = Math.min(discountAmount, coupon.maxDiscount);
-               }
-            } else {
-               discountAmount = coupon.value;
-            }
-
-            set({
-               appliedCoupon: {
-                  ...coupon,
-                  discountAmount,
-               },
-            });
-
-            toast.success('Coupon applied successfully!');
-         },
-
-         removeCoupon: () => {
-            set({ appliedCoupon: null });
-            toast.info('Coupon removed!');
-         },
-
-         getDiscount: () => {
-            const state = get();
-            return state.appliedCoupon?.discountAmount || 0;
-         },
-
-         getTotal: () => {
-            const state = get();
-            return state.getSubtotal() - state.getDiscount();
-         },
       }),
       {
          name: 'cart-storage',
          partialize: (state) => ({
             items: state.items,
-            appliedCoupon: state.appliedCoupon,
          }),
       }
    )
