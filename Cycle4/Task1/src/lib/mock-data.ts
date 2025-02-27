@@ -18,10 +18,12 @@ export interface Product {
 }
 
 export const CATEGORIES = [
-   { id: 1, name: 'Gaming', slug: 'gaming' },
-   { id: 2, name: 'Furniture', slug: 'furniture' },
-   { id: 3, name: 'Monitors', slug: 'monitors' },
-   { id: 4, name: 'Accessories', slug: 'accessories' },
+   { id: 1, name: 'Phones', slug: 'phones' },
+   { id: 2, name: 'Computers', slug: 'computers' },
+   { id: 3, name: 'Smartwatches', slug: 'smartwatches' },
+   { id: 4, name: 'Cameras', slug: 'cameras' },
+   { id: 5, name: 'Headphones', slug: 'headphones' },
+   { id: 6, name: 'Gaming', slug: 'gaming' },
 ];
 
 export const PRODUCTS: Product[] = [
