@@ -1,11 +1,9 @@
-import { useNavigate } from 'react-router-dom';
-
+import Container from '@/components/container';
+import { CategorySidebar } from '@/components/home/sidebar';
 import { Button } from '@/components/ui/button';
 import { useUserStore } from '@/lib/stores/user-store';
 
 export default function Home() {
-   const navigate = useNavigate();
-
    const currentUser = useUserStore((state) => state.currentUser);
    const logout = useUserStore((state) => state.logout);
 
@@ -15,7 +13,11 @@ export default function Home() {
             <h1 className="text-3xl font-bold underline">
                Hello {currentUser?.firstName ?? 'there!'}👋
             </h1>
-            <Button onClick={() => navigate('/about')}>Goto about page</Button>
+
+            <Container>
+               <CategorySidebar />
+            </Container>
+
             <Button onClick={() => logout()}>Logout</Button>
          </div>
       </>

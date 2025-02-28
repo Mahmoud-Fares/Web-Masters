@@ -1,7 +1,7 @@
 import { Coupon } from '../types/cart-types';
 import { User } from './stores/user-store';
 
-export interface Product {
+export type Product = {
    id: number;
    name: string;
    price: number;
@@ -15,16 +15,7 @@ export interface Product {
    sizes?: string[];
    description: string;
    reviews?: string[]; // todo: should it be Review[] ?
-}
-
-export const CATEGORIES = [
-   { id: 1, name: 'Phones', slug: 'phones' },
-   { id: 2, name: 'Computers', slug: 'computers' },
-   { id: 3, name: 'Smartwatches', slug: 'smartwatches' },
-   { id: 4, name: 'Cameras', slug: 'cameras' },
-   { id: 5, name: 'Headphones', slug: 'headphones' },
-   { id: 6, name: 'Gaming', slug: 'gaming' },
-];
+};
 
 export const PRODUCTS: Product[] = [
    {
@@ -194,4 +185,56 @@ export const VALID_COUPONS: Coupon[] = [
       minPurchase: 150,
       isActive: true,
    },
+];
+
+export type SubcategoryType = {
+   name: string;
+   href: string;
+};
+
+export type CategoryItemType = {
+   name: string;
+   href: string;
+   hasChildren?: boolean;
+   subcategories?: SubcategoryType[];
+};
+
+export const CATEGORIES: CategoryItemType[] = [
+   {
+      // eslint-disable-next-line quotes
+      name: "Woman's Fashion",
+      href: '/categories/womans-fashion',
+      hasChildren: true,
+      subcategories: [
+         { name: 'Dresses', href: '/categories/womans-fashion/dresses' },
+         { name: 'Tops', href: '/categories/womans-fashion/tops' },
+         { name: 'Bottoms', href: '/categories/womans-fashion/bottoms' },
+         { name: 'Footwear', href: '/categories/womans-fashion/footwear' },
+         {
+            name: 'Accessories',
+            href: '/categories/womans-fashion/accessories',
+         },
+      ],
+   },
+   {
+      // eslint-disable-next-line quotes
+      name: "Men's Fashion",
+      href: '/categories/mens-fashion',
+      hasChildren: true,
+      subcategories: [
+         { name: 'Shirts', href: '/categories/mens-fashion/shirts' },
+         { name: 'Pants', href: '/categories/mens-fashion/pants' },
+         { name: 'Suits', href: '/categories/mens-fashion/suits' },
+         { name: 'Shoes', href: '/categories/mens-fashion/shoes' },
+         { name: 'Accessories', href: '/categories/mens-fashion/accessories' },
+      ],
+   },
+   { name: 'Electronics', href: '/categories/electronics' },
+   { name: 'Home & Lifestyle', href: '/categories/home-lifestyle' },
+   { name: 'Medicine', href: '/categories/medicine' },
+   { name: 'Sports & Outdoor', href: '/categories/sports-outdoor' },
+   // eslint-disable-next-line quotes
+   { name: "Baby's & Toys", href: '/categories/babies-toys' },
+   { name: 'Groceries & Pets', href: '/categories/groceries-pets' },
+   { name: 'Health & Beauty', href: '/categories/health-beauty' },
 ];
