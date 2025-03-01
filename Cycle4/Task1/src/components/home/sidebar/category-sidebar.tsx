@@ -8,7 +8,7 @@ export function CategorySidebar() {
       <>
          <MobileCategorySidebar />
 
-         <div className="hidden w-full max-w-[300px] border-r md:block">
+         <div className="hidden border-r pt-7 md:block">
             <nav className="flex flex-col">
                {CATEGORIES.map((category) => (
                   <DesktopCategoryItem

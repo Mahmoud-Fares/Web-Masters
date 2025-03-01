@@ -238,3 +238,64 @@ export const CATEGORIES: CategoryItemType[] = [
    { name: 'Groceries & Pets', href: '/categories/groceries-pets' },
    { name: 'Health & Beauty', href: '/categories/health-beauty' },
 ];
+
+export type BannerItem = {
+   id: number;
+   title: string;
+   discount: number;
+   image: string;
+   logo: string;
+};
+
+export const BANNER_ITEMS: BannerItem[] = [
+   {
+      id: 1,
+      title: 'iPhone 14 Series',
+      discount: 10,
+      image: '/images/home/hero/iphone-14.svg',
+      logo: '/images/home/hero/iphone-logo.svg',
+   },
+   {
+      id: 2,
+      title: 'Samsung Galaxy S23',
+      discount: 15,
+      image: '/images/home/hero/samsung-galaxy-s23.png',
+      logo: '/images/home/hero/samsung-logo.svg',
+   },
+   {
+      id: 3,
+      title: 'iPhone 14 Series',
+      discount: 10,
+      image: '/images/home/hero/iphone-14.svg',
+      logo: '/images/home/hero/iphone-logo.svg',
+   },
+   {
+      id: 4,
+      title: 'Samsung Galaxy S23',
+      discount: 15,
+      image: '/images/home/hero/samsung-galaxy-s23.png',
+      logo: '/images/home/hero/samsung-logo.svg',
+   },
+   {
+      id: 5,
+      title: 'iPhone 14 Series',
+      discount: 10,
+      image: '/images/home/hero/iphone-14.svg',
+      logo: '/images/home/hero/iphone-logo.svg',
+   },
+
+   // {
+   //    id: 3,
+   //    title: 'Google Pixel 7',
+   //    discount: 20,
+   //    image: '/images/home/hero/google-pixel-7.svg',
+   //    logo: '/images/home/hero/google-logo.svg',
+   // },
+   // {
+   //    id: 4,
+   //    title: 'OnePlus 11',
+   //    discount: 12,
+   //    image: '/images/home/hero/oneplus-11.svg',
+   //    logo: '/images/home/hero/oneplus-logo.svg',
+   // },
+];

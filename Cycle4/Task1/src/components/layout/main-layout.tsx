@@ -15,8 +15,8 @@ export default function MainLayout({
       <div className="flex min-h-screen flex-col">
          <Header />
 
-         <Container className="pt-section">
-            <CustomBreadcrumb />
+         <Container>
+            <CustomBreadcrumb className="pt-section" />
          </Container>
 
          <main className="flex flex-1 flex-col">{children ?? <Outlet />}</main>

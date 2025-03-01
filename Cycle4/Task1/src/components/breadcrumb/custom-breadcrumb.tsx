@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 
 import { Breadcrumb, BreadcrumbList } from '@/components/ui/breadcrumb';
+import { cn } from '@/lib/utils';
 
 import RenderBreadcrumb from './render-breadcrumb';
 
@@ -26,7 +27,7 @@ export default function CustomBreadcrumb({ className }: CustomBreadcrumbProps) {
       location.pathname === '/' ? segments.slice(1) : segments;
 
    return (
-      <div className={className}>
+      <div className={cn(displaySegments.length > 1 && className)}>
          <Breadcrumb>
             <BreadcrumbList>
                <RenderBreadcrumb displaySegments={displaySegments} />

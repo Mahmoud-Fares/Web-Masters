@@ -15,12 +15,10 @@ export function DesktopCategoryItem({ category }: DesktopCategoryItemProps) {
          <div className="flex w-full items-center">
             <Link
                to={category.href}
-               className="flex flex-1 items-center justify-between px-6 py-4 transition-colors hover:bg-muted"
+               className="flex flex-1 items-center justify-between px-6 py-1 transition-colors hover:bg-muted lg:py-3"
             >
-               <span className="text-foreground">{category.name}</span>
-               {category.hasChildren && (
-                  <ChevronRight className="h-4 w-4 text-muted-foreground" />
-               )}
+               <span>{category.name}</span>
+               {category.hasChildren && <ChevronRight className="h-4 w-4" />}
             </Link>
          </div>
 

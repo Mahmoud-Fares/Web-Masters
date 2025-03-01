@@ -8,7 +8,7 @@ type SubcategoryListProps = {
 
 export function SubcategoryList({ subcategories }: SubcategoryListProps) {
    return (
-      <div className="invisible absolute left-full top-0 pl-2 opacity-0 transition-all duration-500 group-hover:visible group-hover:z-50 group-hover:opacity-100">
+      <div className="invisible absolute left-full top-0 z-40 pl-2 opacity-0 transition-all duration-500 group-hover:visible group-hover:z-50 group-hover:opacity-100 lg:pl-4">
          <ul className="w-48 rounded-md border bg-background py-1 shadow-md">
             {subcategories.map((subcategory) => (
                <li key={subcategory.name}>

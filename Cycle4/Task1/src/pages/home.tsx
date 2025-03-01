@@ -1,5 +1,4 @@
-import Container from '@/components/container';
-import { CategorySidebar } from '@/components/home/sidebar';
+import HeroSection from '@/components/home/hero-section';
 import { Button } from '@/components/ui/button';
 import { useUserStore } from '@/lib/stores/user-store';
 
@@ -9,14 +8,12 @@ export default function Home() {
 
    return (
       <>
+         <HeroSection />
+
          <div className="flex flex-1 flex-col items-center justify-center gap-4 py-8">
             <h1 className="text-3xl font-bold underline">
                Hello {currentUser?.firstName ?? 'there!'}👋
             </h1>
-
-            <Container>
-               <CategorySidebar />
-            </Container>
 
             <Button onClick={() => logout()}>Logout</Button>
          </div>
