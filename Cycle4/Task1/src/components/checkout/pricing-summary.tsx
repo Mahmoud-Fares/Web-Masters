@@ -1,6 +1,6 @@
-import { useCartStore } from '@/lib/stores/cart-store';
-import { useCheckoutStore } from '@/lib/stores/checkout-store';
 import { cn } from '@/lib/utils';
+import { useCartStore } from '@/stores/cart-store';
+import { useCheckoutStore } from '@/stores/checkout-store';
 
 export default function PricingSummary({ className }: { className?: string }) {
    // todo: add shipping logic

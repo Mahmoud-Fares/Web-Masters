@@ -14,9 +14,9 @@ import {
    FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useUserStore } from '@/lib/stores/user-store';
 import { cn } from '@/lib/utils';
 import { signupSchema } from '@/lib/validation/signup-schema';
+import { useUserStore } from '@/stores/user-store';
 
 import GoogleIcon from './icons/google-icon';
 

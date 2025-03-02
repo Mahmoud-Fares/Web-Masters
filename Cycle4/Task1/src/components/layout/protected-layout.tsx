@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { Outlet, useNavigate } from 'react-router-dom';
 
-import { useUserStore } from '@/lib/stores/user-store';
+import { useUserStore } from '@/stores/user-store';
 
 import MainLayout from './main-layout';
 

@@ -5,8 +5,8 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { VALID_COUPONS } from '@/lib/mock-data';
-import { useCartStore } from '@/lib/stores/cart-store';
 import type { checkoutSchema } from '@/lib/validation/checkout-validation';
+import { useCartStore } from '@/stores/cart-store';
 import type { Coupon } from '@/types/cart-types';
 
 type SavedUserInfo = z.infer<typeof checkoutSchema>;

@@ -2,9 +2,9 @@ import { Heart, ShoppingCart, User } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
-import { useCartStore } from '@/lib/stores/cart-store';
-import { useWishlistStore } from '@/lib/stores/wishlist-store';
 import { cn } from '@/lib/utils';
+import { useCartStore } from '@/stores/cart-store';
+import { useWishlistStore } from '@/stores/wishlist-store';
 
 type Action = {
    icon: React.ElementType;

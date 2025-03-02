@@ -4,8 +4,8 @@ import Container from '@/components/container';
 import ProductList from '@/components/product/product-list';
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
-import { useCartStore } from '@/lib/stores/cart-store';
-import { useWishlistStore } from '@/lib/stores/wishlist-store';
+import { useCartStore } from '@/stores/cart-store';
+import { useWishlistStore } from '@/stores/wishlist-store';
 
 export default function WishlistSection() {
    const { items: products, toggleItem } = useWishlistStore();

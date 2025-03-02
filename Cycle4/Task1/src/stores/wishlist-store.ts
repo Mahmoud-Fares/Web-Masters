@@ -2,7 +2,7 @@ import { toast } from 'sonner';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { Product } from '@/lib/mock-data';
+import { Product } from '@/types/product';
 
 type WishlistState = {
    items: Product[];

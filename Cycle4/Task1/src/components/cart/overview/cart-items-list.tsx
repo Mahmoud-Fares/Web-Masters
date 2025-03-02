@@ -1,6 +1,6 @@
 import { CartItemRow } from '@/components/cart/overview/cart-item';
-import { useCartStore } from '@/lib/stores/cart-store';
 import { cn } from '@/lib/utils';
+import { useCartStore } from '@/stores/cart-store';
 
 export default function CartItemsList({ className }: { className?: string }) {
    const items = useCartStore((state) => state.items);

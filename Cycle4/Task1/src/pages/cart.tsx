@@ -4,7 +4,7 @@ import CartCashSection from '@/components/cart/items-cash-section';
 import CartItemsOverviewSection from '@/components/cart/items-overview-section';
 import Container from '@/components/container';
 import { EmptyState } from '@/components/ui/empty-state';
-import { useCartStore } from '@/lib/stores/cart-store';
+import { useCartStore } from '@/stores/cart-store';
 
 export default function CartPage() {
    const items = useCartStore((state) => state.items);

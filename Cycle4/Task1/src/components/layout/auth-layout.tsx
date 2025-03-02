@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { Outlet, useNavigate } from 'react-router-dom';
 
-import { useUserStore } from '@/lib/stores/user-store';
+import { useUserStore } from '@/stores/user-store';
 
 export function AuthLayout() {
    const currentUser = useUserStore((state) => state.currentUser);

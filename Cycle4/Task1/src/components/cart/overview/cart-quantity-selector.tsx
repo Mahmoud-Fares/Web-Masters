@@ -4,7 +4,7 @@ import {
    default as DecrementButton,
    default as IncrementButton,
 } from '@/components/buttons/quantity-button';
-import { useCartStore } from '@/lib/stores/cart-store';
+import { useCartStore } from '@/stores/cart-store';
 import { CartItem } from '@/types/cart-types';
 
 export default function CartQuantitySelector({ item }: { item: CartItem }) {

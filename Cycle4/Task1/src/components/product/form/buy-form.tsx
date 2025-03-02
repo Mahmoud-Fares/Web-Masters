@@ -3,7 +3,7 @@ import { useState } from 'react';
 import FavButton from '@/components/buttons/fav-button';
 import { Button } from '@/components/ui/button';
 import { Product } from '@/lib/mock-data';
-import { useCartStore } from '@/lib/stores/cart-store';
+import { useCartStore } from '@/stores/cart-store';
 
 import ColorSelector from './color-selector';
 import QuantitySelector from './quantity-selector';

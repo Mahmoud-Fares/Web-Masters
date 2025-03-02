@@ -14,8 +14,8 @@ import {
    FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useCheckoutStore } from '@/lib/stores/checkout-store';
 import type { checkoutSchema } from '@/lib/validation/checkout-validation';
+import { useCheckoutStore } from '@/stores/checkout-store';
 
 type CheckoutFormProps = {
    form: UseFormReturn<z.infer<typeof checkoutSchema>>;

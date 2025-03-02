@@ -1,11 +1,11 @@
 import SizeOptionButton from '@/components/buttons/size-option-button';
 import { cn } from '@/lib/utils';
 
-interface SizeSelectorProps {
+type SizeSelectorProps = {
    sizes: string[];
    selectedSize: string;
    onSelectSize: (size: string) => void;
-}
+};
 
 export default function SizeSelector({
    sizes,

@@ -1,8 +1,8 @@
 import { X } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import { useCartStore } from '@/lib/stores/cart-store';
 import { cn } from '@/lib/utils';
+import { useCartStore } from '@/stores/cart-store';
 import { CartItem } from '@/types/cart-types';
 
 type CartItemDetailsProps = {

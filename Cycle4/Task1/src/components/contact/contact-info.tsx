@@ -2,12 +2,12 @@ import type { LucideIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
-interface ContactInfoProps {
+type ContactInfoProps = {
    icon: LucideIcon;
    title: string;
    children: React.ReactNode;
    className?: string;
-}
+};
 
 export default function ContactInfo({
    icon: Icon,

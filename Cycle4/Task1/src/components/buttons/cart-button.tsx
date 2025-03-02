@@ -1,8 +1,8 @@
 import { ShoppingCart } from 'lucide-react';
 
 import { Product } from '@/lib/mock-data';
-import { useCartStore } from '@/lib/stores/cart-store';
 import { cn } from '@/lib/utils';
+import { useCartStore } from '@/stores/cart-store';
 
 import UserActionButton, { UserActionButtonProps } from './user-action-button';
 

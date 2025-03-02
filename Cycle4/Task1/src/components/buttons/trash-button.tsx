@@ -1,7 +1,7 @@
 import { TrashIcon } from 'lucide-react';
 
 import { Product } from '@/lib/mock-data';
-import { useWishlistStore } from '@/lib/stores/wishlist-store';
+import { useWishlistStore } from '@/stores/wishlist-store';
 
 import UserActionButton, { UserActionButtonProps } from './user-action-button';
 

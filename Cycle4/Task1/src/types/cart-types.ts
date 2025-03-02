@@ -1,4 +1,4 @@
-import { Product } from '@/lib/mock-data';
+import { Product } from '@/types/product';
 
 export type CouponType = 'percentage' | 'fixed';
 

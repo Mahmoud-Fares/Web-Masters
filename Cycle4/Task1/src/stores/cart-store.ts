@@ -2,8 +2,8 @@ import { toast } from 'sonner';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { Product } from '@/lib/mock-data';
 import { CartItem } from '@/types/cart-types';
+import { Product } from '@/types/product';
 
 type addItemProps = {
    product: Product;

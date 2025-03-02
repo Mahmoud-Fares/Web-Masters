@@ -1,21 +1,6 @@
-import { Coupon } from '../types/cart-types';
-import { User } from './stores/user-store';
-
-export type Product = {
-   id: number;
-   name: string;
-   price: number;
-   originalPrice?: number;
-   discount?: number;
-   images: string[];
-   category: string;
-   rating: number;
-   inStock: boolean;
-   colors?: string[];
-   sizes?: string[];
-   description: string;
-   reviews?: string[]; // todo: should it be Review[] ?
-};
+import { User } from '@/stores/user-store';
+import { Coupon } from '@/types/cart-types';
+import { Product } from '@/types/product';
 
 export const PRODUCTS: Product[] = [
    {

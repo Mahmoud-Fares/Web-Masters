@@ -1,5 +1,5 @@
-import { useCartStore } from '@/lib/stores/cart-store';
 import { cn } from '@/lib/utils';
+import { useCartStore } from '@/stores/cart-store';
 
 import CheckoutItem from './checkout-item';
 

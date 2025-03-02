@@ -3,16 +3,8 @@ import { toast } from 'sonner';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { USERS } from '../mock-data';
-
-export interface User {
-   id: number;
-   firstName: string;
-   lastName: string;
-   email: string;
-   address: string;
-   password: string;
-}
+import { USERS } from '@/lib/mock-data';
+import { User } from '@/types/user';
 
 type loginProps = {
    email: string;
@@ -21,7 +13,7 @@ type loginProps = {
 };
 type signupProps = { newUser: Omit<User, 'id'>; navigate: NavigateFunction };
 
-interface UserState {
+type UserState = {
    currentUser: Omit<User, 'password'> | null;
    users: User[];
    login: ({ email, password, navigate }: loginProps) => void;
@@ -33,7 +25,7 @@ interface UserState {
          newPassword?: string;
       }
    ) => boolean;
-}
+};
 
 export const useUserStore = create<UserState>()(
    persist(

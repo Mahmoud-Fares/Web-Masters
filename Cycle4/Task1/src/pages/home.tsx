@@ -1,6 +1,6 @@
 import HeroSection from '@/components/home/hero-section';
 import { Button } from '@/components/ui/button';
-import { useUserStore } from '@/lib/stores/user-store';
+import { useUserStore } from '@/stores/user-store';
 
 export default function Home() {
    const currentUser = useUserStore((state) => state.currentUser);

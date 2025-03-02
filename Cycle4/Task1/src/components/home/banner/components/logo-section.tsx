@@ -1,7 +1,7 @@
-interface LogoSectionProps {
+type LogoSectionProps = {
    logo: string;
    title: string;
-}
+};
 
 export function LogoSection({ logo, title }: LogoSectionProps) {
    return (

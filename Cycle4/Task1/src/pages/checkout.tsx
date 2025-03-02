@@ -7,8 +7,8 @@ import type { z } from 'zod';
 import CheckoutForm from '@/components/checkout/checkout-form';
 import { OrderSummary } from '@/components/checkout/order-summary';
 import Container from '@/components/container';
-import { useCheckoutStore } from '@/lib/stores/checkout-store';
 import { checkoutSchema } from '@/lib/validation/checkout-validation';
+import { useCheckoutStore } from '@/stores/checkout-store';
 
 export default function CheckoutPage() {
    const { savedUserInfo, placeOrder } = useCheckoutStore();

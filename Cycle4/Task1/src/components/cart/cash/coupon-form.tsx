@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useCheckoutStore } from '@/lib/stores/checkout-store';
 import { cn } from '@/lib/utils';
+import { useCheckoutStore } from '@/stores/checkout-store';
 
 type CouponFormProps = {
    className?: string;
