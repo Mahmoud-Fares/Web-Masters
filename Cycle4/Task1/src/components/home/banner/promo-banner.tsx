@@ -32,15 +32,17 @@ export default function PromoBanner({ className }: { className?: string }) {
          plugins={[Autoplay({ delay: 5000 })]}
          setApi={setApi}
       >
-         <CarouselContent>
-            {BANNER_ITEMS.map((item) => (
-               <CarouselItem key={item.id}>
-                  <BannerItem item={item} />
-               </CarouselItem>
-            ))}
-         </CarouselContent>
+         <div className="relative">
+            <CarouselContent>
+               {BANNER_ITEMS.map((item) => (
+                  <CarouselItem key={item.id} className="bg-black">
+                     <BannerItem item={item} />
+                  </CarouselItem>
+               ))}
+            </CarouselContent>
 
-         <CarouselDots api={api} current={current} setCurrent={setCurrent} />
+            <CarouselDots api={api} current={current} setCurrent={setCurrent} />
+         </div>
       </Carousel>
    );
 }

@@ -6,7 +6,7 @@ export function ShopNowButton() {
       <Link
          // todo should be to the shop or to the specific product page
          to="/products"
-         className="flex items-center gap-2 border-b border-white pb-1 text-white transition-opacity hover:opacity-80"
+         className="mb-4 flex items-center gap-2 border-b border-white pb-1 text-white transition-opacity hover:opacity-80"
       >
          Shop Now <ArrowRight className="h-5 w-5" />
       </Link>

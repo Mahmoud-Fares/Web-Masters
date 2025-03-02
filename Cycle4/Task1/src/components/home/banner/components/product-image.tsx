@@ -8,7 +8,7 @@ type ProductImageProps = {
 
 export function ProductImage({ image, title, className }: ProductImageProps) {
    return (
-      <div className="flex items-center justify-center">
+      <div className="flex max-w-sm items-center justify-center">
          <img
             src={image || '/placeholder.svg'}
             alt={title}
