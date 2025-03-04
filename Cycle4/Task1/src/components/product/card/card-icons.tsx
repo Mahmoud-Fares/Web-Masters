@@ -1,7 +1,7 @@
 import FavButton from '@/components/buttons/fav-button';
 import TrashButton from '@/components/buttons/trash-button';
 import ViewButton from '@/components/buttons/view-button';
-import { Product } from '@/lib/mock-data';
+import { Product } from '@/types/product';
 
 const ICONS = [
    {

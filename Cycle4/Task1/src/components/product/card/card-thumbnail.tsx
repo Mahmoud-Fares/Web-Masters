@@ -1,5 +1,5 @@
 import CartButton from '@/components/buttons/cart-button';
-import { Product } from '@/lib/mock-data';
+import { Product } from '@/types/product';
 
 import CardIcons, { IconType } from './card-icons';
 import DiscountBadge from './discount-badge';

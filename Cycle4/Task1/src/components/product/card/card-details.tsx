@@ -1,4 +1,4 @@
-import { Product } from '@/lib/mock-data';
+import { Product } from '@/types/product';
 
 import Price from '../info/price';
 import Rate from '../info/rate';

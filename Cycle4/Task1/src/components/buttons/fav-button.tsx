@@ -1,8 +1,8 @@
 import { Heart } from 'lucide-react';
 
-import { Product } from '@/lib/mock-data';
 import { cn } from '@/lib/utils';
 import { useWishlistStore } from '@/stores/wishlist-store';
+import { Product } from '@/types/product';
 
 import UserActionButton, { UserActionButtonProps } from './user-action-button';
 

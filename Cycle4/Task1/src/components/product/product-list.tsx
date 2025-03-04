@@ -1,5 +1,5 @@
-import { Product } from '@/lib/mock-data';
 import { cn } from '@/lib/utils';
+import { Product } from '@/types/product';
 
 import { IconType } from './card/card-icons';
 import ProductCard from './product-card';

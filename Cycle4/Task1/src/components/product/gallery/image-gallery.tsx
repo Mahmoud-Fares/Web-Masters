@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Product } from '@/lib/mock-data';
+import { Product } from '@/types/product';
 
 import ImageOptions from './image-options';
 import SelectedImage from './selected-image';

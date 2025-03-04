@@ -1,4 +1,4 @@
-import { Product } from '@/lib/mock-data';
+import { Product } from '@/types/product';
 
 import CardDetails from './card/card-details';
 import { IconType } from './card/card-icons';

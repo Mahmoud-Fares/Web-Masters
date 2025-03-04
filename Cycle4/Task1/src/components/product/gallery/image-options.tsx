@@ -1,5 +1,5 @@
-import { Product } from '@/lib/mock-data';
 import { cn } from '@/lib/utils';
+import { Product } from '@/types/product';
 
 type ImageOptionsProps = {
    product: Product;

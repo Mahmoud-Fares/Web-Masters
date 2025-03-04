@@ -1,4 +1,4 @@
-import { Product } from '@/lib/mock-data';
+import { Product } from '@/types/product';
 
 import BuyForm from '../product/form/buy-form';
 import DeliverySection from './delivery-section';
