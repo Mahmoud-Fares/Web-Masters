@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import {
    Carousel,
    CarouselContent,
+   CarouselIndicator,
    CarouselItem,
 } from '@/components/ui/carousel';
 import { cn } from '@/lib/utils';
@@ -88,6 +89,8 @@ export default function CustomCarousel<T>({
                </CarouselItem>
             ))}
          </CarouselContent>
+
+         <CarouselIndicator />
       </Carousel>
    );
 }

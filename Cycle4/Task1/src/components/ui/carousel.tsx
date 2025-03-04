@@ -41,6 +41,57 @@ function useCarousel() {
    return context;
 }
 
+const CarouselIndicator: React.FC<{
+   className?: string;
+   indicatorClassName?: string;
+   activeIndicatorClassName?: string;
+}> = ({ className, indicatorClassName, activeIndicatorClassName }) => {
+   const { api } = useCarousel();
+   const [currentIndex, setCurrentIndex] = React.useState(0);
+
+   React.useEffect(() => {
+      const updateIndex = () => {
+         if (api) {
+            setCurrentIndex(api.selectedScrollSnap());
+         }
+      };
+
+      if (api) {
+         updateIndex(); // Set initial index
+         api.on('select', updateIndex);
+      }
+
+      return () => {
+         if (api) {
+            api.off('select', updateIndex);
+         }
+      };
+   }, [api]);
+
+   const handleIndicatorClick = (index: number) => {
+      api?.scrollTo(index);
+   };
+
+   const slidesCount = api?.scrollSnapList().length || 0;
+
+   return (
+      <div className={`mt-4 flex justify-center ${className}`}>
+         {Array.from({ length: slidesCount }).map((_, index) => (
+            <button
+               key={index}
+               className={cn(
+                  'mx-1 h-3 w-3 rounded-full bg-muted transition-all duration-300',
+                  indicatorClassName,
+                  index === currentIndex &&
+                     `bg-primary ${activeIndicatorClassName}`
+               )}
+               onClick={() => handleIndicatorClick(index)}
+            />
+         ))}
+      </div>
+   );
+};
+
 const Carousel = React.forwardRef<
    HTMLDivElement,
    React.HTMLAttributes<HTMLDivElement> & CarouselProps
@@ -255,6 +306,7 @@ CarouselNext.displayName = 'CarouselNext';
 export {
    Carousel,
    CarouselContent,
+   CarouselIndicator,
    CarouselItem,
    CarouselNext,
    CarouselPrevious,
