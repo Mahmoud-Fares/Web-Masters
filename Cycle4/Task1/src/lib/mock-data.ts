@@ -1,6 +1,6 @@
-import { User } from '@/stores/user-store';
 import { Coupon } from '@/types/cart-types';
 import { Product } from '@/types/product';
+import { User } from '@/types/user';
 
 export const PRODUCTS: Product[] = [
    {
