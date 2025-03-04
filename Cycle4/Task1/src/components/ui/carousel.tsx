@@ -75,12 +75,12 @@ const CarouselIndicator: React.FC<{
    const slidesCount = api?.scrollSnapList().length || 0;
 
    return (
-      <div className={`mt-4 flex justify-center ${className}`}>
+      <div className={cn('mt-4 flex justify-center gap-2', className)}>
          {Array.from({ length: slidesCount }).map((_, index) => (
             <button
                key={index}
                className={cn(
-                  'mx-1 h-3 w-3 rounded-full bg-muted transition-all duration-300',
+                  'h-3 w-3 rounded-full bg-border transition-all duration-300',
                   indicatorClassName,
                   index === currentIndex &&
                      `bg-primary ${activeIndicatorClassName}`
