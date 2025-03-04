@@ -15,17 +15,28 @@ type CustomCarouselProps<T> = {
    renderItem: (item: T) => React.ReactNode;
    rows?: 1 | 2;
    className?: string;
+   cols?: number;
+   smallCols?: number;
+   mediumCols?: number;
+   largeCols?: number;
 };
 
 const SingleRowCarousel = <T,>({
    data,
    renderItem,
+   cols,
+   smallCols,
+   mediumCols,
+   largeCols,
 }: CustomCarouselProps<T>) => (
    <CarouselContent>
       {data.map((item, index) => (
          <CarouselItem
             key={index}
-            className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+            className={cn(
+               'sm:basis-1/2 md:basis-1/3 lg:basis-1/4',
+               `basis-1/${cols} sm:basis-1/${smallCols} md:basis-1/${mediumCols} lg:basis-1/${largeCols}`
+            )}
          >
             {renderItem(item)}
          </CarouselItem>
@@ -36,6 +47,10 @@ const SingleRowCarousel = <T,>({
 const DoubleRowCarousel = <T,>({
    data,
    renderItem,
+   cols,
+   smallCols,
+   mediumCols,
+   largeCols,
 }: CustomCarouselProps<T>) => (
    <CarouselContent>
       {/* the carousel Item will be two components stacking one top of the other */}
@@ -46,7 +61,10 @@ const DoubleRowCarousel = <T,>({
             return (
                <CarouselItem
                   key={slideIndex}
-                  className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                  className={cn(
+                     'sm:basis-1/2 md:basis-1/3 lg:basis-1/4',
+                     `basis-1/${cols} sm:basis-1/${smallCols} md:basis-1/${mediumCols} lg:basis-1/${largeCols}`
+                  )}
                >
                   <div className="grid grid-rows-2 gap-4">
                      {/* Render the first item if it exists */}
@@ -71,17 +89,35 @@ export default function CustomCarousel<T>({
    renderItem,
    rows = 1,
    className,
+   cols = 1,
+   smallCols = 2,
+   mediumCols = 3,
+   largeCols = 4,
 }: CustomCarouselProps<T>) {
    return (
       <Carousel opts={{ align: 'start' }} className={className}>
          {rows === 1 ? (
-            <SingleRowCarousel data={data} renderItem={renderItem} />
+            <SingleRowCarousel
+               data={data}
+               renderItem={renderItem}
+               cols={cols}
+               smallCols={smallCols}
+               mediumCols={mediumCols}
+               largeCols={largeCols}
+            />
          ) : (
-            <DoubleRowCarousel data={data} renderItem={renderItem} />
+            <DoubleRowCarousel
+               data={data}
+               renderItem={renderItem}
+               cols={cols}
+               smallCols={smallCols}
+               mediumCols={mediumCols}
+               largeCols={largeCols}
+            />
          )}
 
          <NavigationButtons />
-         <CarouselIndicator />
+         <CarouselIndicator className="sm:hidden" />
       </Carousel>
    );
 }
@@ -90,7 +126,7 @@ const NavigationButtons = () => {
    return (
       <div
          className={cn(
-            'absolute bottom-0 right-0 flex translate-y-[110%] gap-2 p-2',
+            'absolute bottom-0 right-0 flex translate-y-2/3 gap-2 p-2',
             'sm:top-0 sm:h-fit sm:-translate-y-full'
          )}
       >

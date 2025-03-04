@@ -1,9 +1,10 @@
-import Container from '@/components/container';
-import CustomCarousel from '@/components/home/custom-carousel';
+import ServiceSection from '@/components/about/service/service-section';
+import BestSalesSection from '@/components/home/best-sales-section';
+import CategoriesSection from '@/components/home/categories-section';
+import ExploreSection from '@/components/home/explore-section';
+import FlashSalesSection from '@/components/home/flash-sales-section';
 import HeroSection from '@/components/home/hero-section';
-import ProductCard from '@/components/product/product-card';
 import { Button } from '@/components/ui/button';
-import { PRODUCTS } from '@/lib/mock-data';
 import { useUserStore } from '@/stores/user-store';
 
 export default function Home() {
@@ -13,13 +14,16 @@ export default function Home() {
    return (
       <>
          <HeroSection />
-         <Container className="py-section">
-            <CustomCarousel
-               data={[...PRODUCTS, ...PRODUCTS, ...PRODUCTS]}
-               renderItem={(item) => <ProductCard product={item} />}
-               rows={2}
-            />
-         </Container>
+
+         <FlashSalesSection />
+
+         <CategoriesSection />
+
+         <BestSalesSection />
+
+         <ExploreSection />
+
+         <ServiceSection />
 
          <div className="flex flex-1 flex-col items-center justify-center gap-4 py-8">
             <h1 className="text-3xl font-bold underline">
