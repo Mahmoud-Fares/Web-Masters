@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 
 import CustomBreadcrumb from '@/components/breadcrumb/custom-breadcrumb';
 import Footer from '@/components/layout/footer';
@@ -12,16 +12,21 @@ export default function MainLayout({
    children?: React.ReactNode;
 }) {
    return (
-      <div className="flex min-h-screen flex-col">
-         <Header />
+      <>
+         <ScrollRestoration />
+         <div className="flex min-h-screen flex-col">
+            <Header />
 
-         <Container>
-            <CustomBreadcrumb className="pt-section" />
-         </Container>
+            <Container>
+               <CustomBreadcrumb className="pt-section" />
+            </Container>
 
-         <main className="flex flex-1 flex-col">{children ?? <Outlet />}</main>
+            <main className="flex flex-1 flex-col">
+               {children ?? <Outlet />}
+            </main>
 
-         <Footer />
-      </div>
+            <Footer />
+         </div>
+      </>
    );
 }

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Container from '@/components/container';
 import {
@@ -17,9 +17,9 @@ export default function AnnouncementBar() {
             <p className="flex-1 text-center text-sm">
                Summer Sale For All Swim Suits And Free Express Delivery - OFF
                50!
-               <NavLink to="/shop" className="ml-1 font-bold underline">
+               <Link to="/shop" className="ml-1 font-bold underline">
                   ShopNow
-               </NavLink>
+               </Link>
             </p>
 
             <Select defaultValue="english">

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Container from '@/components/container';
 import { Button } from '@/components/ui/button';
@@ -13,11 +13,11 @@ export default function NotFound() {
          <p>Your visited page not found. You may go home page.</p>
 
          <div className="pt-8">
-            <NavLink to="/">
+            <Link to="/">
                <Button className="h-auto rounded px-10 py-4 text-base">
                   Back to home page
                </Button>
-            </NavLink>
+            </Link>
          </div>
       </Container>
    );
