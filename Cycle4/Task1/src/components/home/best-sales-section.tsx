@@ -13,7 +13,7 @@ export default function BestSalesSection() {
    return (
       <section>
          <Container className="py-section">
-            <div className="flex items-end justify-between">
+            <div className="flex flex-wrap items-end justify-between gap-4">
                <SectionTitle text="This Month">
                   Best Selling Products
                </SectionTitle>

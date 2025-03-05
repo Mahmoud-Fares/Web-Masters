@@ -34,7 +34,7 @@ const SingleRowCarousel = <T,>({
          <CarouselItem
             key={index}
             className={cn(
-               'sm:basis-1/2 md:basis-1/3 lg:basis-1/4',
+               'max-w-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4',
                `basis-1/${cols} sm:basis-1/${smallCols} md:basis-1/${mediumCols} lg:basis-1/${largeCols}`
             )}
          >
@@ -62,7 +62,7 @@ const DoubleRowCarousel = <T,>({
                <CarouselItem
                   key={slideIndex}
                   className={cn(
-                     'sm:basis-1/2 md:basis-1/3 lg:basis-1/4',
+                     'max-w-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4',
                      `basis-1/${cols} sm:basis-1/${smallCols} md:basis-1/${mediumCols} lg:basis-1/${largeCols}`
                   )}
                >

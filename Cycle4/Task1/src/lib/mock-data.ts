@@ -126,6 +126,69 @@ export const PRODUCTS: Product[] = [
    },
 ];
 
+export const NEW_ARRIVALS: Product[] = [
+   {
+      id: 1,
+      name: 'PlayStation 5',
+      price: 69.99,
+      images: ['/images/home/new-arrival/ps5.svg'],
+      category: 'Gaming',
+      rating: 4,
+      inStock: true,
+      description: 'Black and White version of the PS5 coming out on sale.',
+      reviews: [
+         'This is a great product!',
+         'I love the color and the size!',
+         'The product is very good!',
+      ],
+   },
+   {
+      id: 2,
+      name: 'Women’s Collections',
+      price: 900,
+      images: ['/images/home/new-arrival/woman-wearing-hat.svg'],
+      category: 'womans-fashion',
+      rating: 4,
+      inStock: true,
+      description: 'Featured woman collections that give you another vibe.',
+      reviews: [
+         'This is a great product!',
+         'I love the color and the size!',
+         'The product is very good!',
+      ],
+   },
+   {
+      id: 3,
+      name: 'Speakers',
+      price: 100,
+      images: ['/images/home/new-arrival/speakers.svg'],
+      category: 'Electronics',
+      rating: 4,
+      inStock: true,
+      description: 'Amazon wireless speakers',
+      reviews: [
+         'This is a great product!',
+         'I love the color and the size!',
+         'The product is very good!',
+      ],
+   },
+   {
+      id: 4,
+      name: 'Perfume',
+      price: 500,
+      images: ['/images/home/new-arrival/perfume.svg'],
+      category: 'men-fashion',
+      rating: 4,
+      inStock: true,
+      description: 'GUCCI INTENSE OUD EDP',
+      reviews: [
+         'This is a great product!',
+         'I love the color and the size!',
+         'The product is very good!',
+      ],
+   },
+];
+
 export const featuredProducts = PRODUCTS.slice(0, 3);
 
 export const USERS: User[] = [

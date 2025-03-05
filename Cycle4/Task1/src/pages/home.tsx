@@ -4,6 +4,7 @@ import CategoriesSection from '@/components/home/categories-section';
 import ExploreSection from '@/components/home/explore-section';
 import FlashSalesSection from '@/components/home/flash-sales-section';
 import HeroSection from '@/components/home/hero-section';
+import NewArrivalsSection from '@/components/home/new-arrival/new-arrivals-section';
 import { Button } from '@/components/ui/button';
 import { useUserStore } from '@/stores/user-store';
 
@@ -22,6 +23,8 @@ export default function Home() {
          <BestSalesSection />
 
          <ExploreSection />
+
+         <NewArrivalsSection />
 
          <ServiceSection />
 
