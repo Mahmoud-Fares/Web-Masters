@@ -8,6 +8,7 @@ import {
    CarouselNext,
    CarouselPrevious,
 } from '@/components/ui/carousel';
+import useWindow from '@/hooks/use-window';
 import { cn } from '@/lib/utils';
 
 type CustomCarouselProps<T> = {
@@ -94,9 +95,13 @@ export default function CustomCarousel<T>({
    mediumCols = 3,
    largeCols = 4,
 }: CustomCarouselProps<T>) {
+   const windowSize = useWindow();
+   const isSmall = windowSize === 'small';
+
    return (
       <Carousel opts={{ align: 'start' }} className={className}>
-         {rows === 1 ? (
+         {/* for small screens, we want to show a single row carousel */}
+         {rows === 1 || isSmall ? (
             <SingleRowCarousel
                data={data}
                renderItem={renderItem}
