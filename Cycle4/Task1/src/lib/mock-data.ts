@@ -6,6 +6,7 @@ export const PRODUCTS: Product[] = [
    {
       id: 1,
       name: 'Havic HV G-92 Gamepad',
+      slug: 'havic-hv-g-92-gamepad',
       price: 192,
       originalPrice: 200,
       discount: 40,
@@ -32,6 +33,7 @@ export const PRODUCTS: Product[] = [
    {
       id: 2,
       name: 'RGB Gaming Keyboard',
+      slug: 'rgb-gaming-keyboard',
       price: 960,
       originalPrice: 1477,
       discount: 35,
@@ -46,10 +48,10 @@ export const PRODUCTS: Product[] = [
       rating: 4,
       inStock: true,
       description:
-         'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.',
+         'High quality RGB gaming keyboard with customizable lighting.',
       reviews: [
-         'This is a great product!',
-         'I love the color and the size!',
+         'This keyboard is amazing!',
+         'The RGB lights are stunning!',
          'The product is very good!',
       ],
       colors: ['blue', 'red', 'green'],
@@ -58,6 +60,7 @@ export const PRODUCTS: Product[] = [
    {
       id: 3,
       name: 'Gaming Monitor 27"',
+      slug: 'gaming-monitor-27',
       price: 370,
       originalPrice: 529,
       discount: 30,
@@ -71,17 +74,13 @@ export const PRODUCTS: Product[] = [
       category: 'Monitors',
       rating: 5,
       inStock: true,
-      description:
-         'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.',
-      reviews: [
-         'This is a great product!',
-         'I love the color and the size!',
-         'The product is very good!',
-      ],
+      description: 'High quality gaming monitor with stunning visuals.',
+      reviews: ['This monitor is fantastic!', 'Great for gaming!'],
    },
    {
       id: 4,
       name: 'Modern Dining Chair',
+      slug: 'modern-dining-chair',
       price: 375,
       originalPrice: 500,
       discount: 25,
@@ -107,6 +106,7 @@ export const PRODUCTS: Product[] = [
    {
       id: 5,
       name: 'PS5 Controller',
+      slug: 'ps5-controller',
       price: 69.99,
       images: [
          'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-JIwFRuPLDlpJVODiK4Wu2lA7tg5fge.png',
@@ -130,6 +130,7 @@ export const NEW_ARRIVALS: Product[] = [
    {
       id: 1,
       name: 'PlayStation 5',
+      slug: 'playstation-5',
       price: 69.99,
       images: ['/images/home/new-arrival/ps5.svg'],
       category: 'Gaming',
@@ -145,6 +146,7 @@ export const NEW_ARRIVALS: Product[] = [
    {
       id: 2,
       name: 'Women’s Collections',
+      slug: 'womens-collections',
       price: 900,
       images: ['/images/home/new-arrival/woman-wearing-hat.svg'],
       category: 'womans-fashion',
@@ -160,6 +162,7 @@ export const NEW_ARRIVALS: Product[] = [
    {
       id: 3,
       name: 'Speakers',
+      slug: 'speakers',
       price: 100,
       images: ['/images/home/new-arrival/speakers.svg'],
       category: 'Electronics',
@@ -175,6 +178,7 @@ export const NEW_ARRIVALS: Product[] = [
    {
       id: 4,
       name: 'Perfume',
+      slug: 'perfume',
       price: 500,
       images: ['/images/home/new-arrival/perfume.svg'],
       category: 'men-fashion',
@@ -188,8 +192,6 @@ export const NEW_ARRIVALS: Product[] = [
       ],
    },
 ];
-
-export const featuredProducts = PRODUCTS.slice(0, 3);
 
 export const USERS: User[] = [
    {

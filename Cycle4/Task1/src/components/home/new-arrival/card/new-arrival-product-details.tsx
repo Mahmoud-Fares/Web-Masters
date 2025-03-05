@@ -9,7 +9,7 @@ type NewArrivalProductDetailsProps = {
 };
 
 export default function NewArrivalProductDetails({
-   product: { name, description, id },
+   product: { name, description, slug },
    isSmall,
 }: NewArrivalProductDetailsProps) {
    return (
@@ -38,7 +38,7 @@ export default function NewArrivalProductDetails({
          </p>
 
          <Link
-            to={`/products/${id}`}
+            to={`/product/${slug}`}
             className="inline-block text-white transition-opacity hover:opacity-80"
          >
             <span className="border-b border-white pb-0.5">Shop Now</span>
