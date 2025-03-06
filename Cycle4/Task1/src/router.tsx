@@ -1,25 +1,33 @@
+import { Suspense, lazy } from 'react';
+
 import { createBrowserRouter } from 'react-router-dom';
 
 import ErrorBoundary from '@/components/error-boundary';
 import { AuthLayout } from '@/components/layout/auth-layout';
 import MainLayout from '@/components/layout/main-layout';
 import ProtectedLayout from '@/components/layout/protected-layout';
-import AboutPage from '@/pages/about';
-import AccountPage from '@/pages/account';
-import CartPage from '@/pages/cart';
-import CheckoutPage from '@/pages/checkout';
-import ContactPage from '@/pages/contact';
-import Home from '@/pages/home';
-import LoginPage from '@/pages/login';
-import NotFound from '@/pages/not-found';
-import ProductPage from '@/pages/product-page';
-import SignUpPage from '@/pages/signup';
-import WishlistPage from '@/pages/wishlist';
+import Loader from '@/components/loader';
+
+const AboutPage = lazy(() => import('@/pages/about'));
+const AccountPage = lazy(() => import('@/pages/account'));
+const CartPage = lazy(() => import('@/pages/cart'));
+const CheckoutPage = lazy(() => import('@/pages/checkout'));
+const ContactPage = lazy(() => import('@/pages/contact'));
+const Home = lazy(() => import('@/pages/home'));
+const LoginPage = lazy(() => import('@/pages/login'));
+const NotFound = lazy(() => import('@/pages/not-found'));
+const ProductPage = lazy(() => import('@/pages/product-page'));
+const SignUpPage = lazy(() => import('@/pages/signup'));
+const WishlistPage = lazy(() => import('@/pages/wishlist'));
 
 export const router = createBrowserRouter([
    {
       path: '/',
-      element: <MainLayout />,
+      element: (
+         <Suspense fallback={<Loader />}>
+            <MainLayout />
+         </Suspense>
+      ),
       errorElement: <ErrorBoundary />,
       children: [
          {
@@ -47,7 +55,11 @@ export const router = createBrowserRouter([
    // Protected routes group
    {
       path: '/',
-      element: <ProtectedLayout />,
+      element: (
+         <Suspense fallback={<Loader />}>
+            <ProtectedLayout />
+         </Suspense>
+      ),
       errorElement: <ErrorBoundary />,
       children: [
          {
@@ -71,7 +83,11 @@ export const router = createBrowserRouter([
    // Auth routes group
    {
       path: '/',
-      element: <AuthLayout />,
+      element: (
+         <Suspense fallback={<Loader />}>
+            <AuthLayout />
+         </Suspense>
+      ),
       errorElement: <ErrorBoundary />,
       children: [
          {
