@@ -1,5 +1,3 @@
-import type React from 'react';
-
 import {
    Carousel,
    CarouselContent,
@@ -10,17 +8,6 @@ import {
 } from '@/components/ui/carousel';
 import useWindow from '@/hooks/use-window';
 import { cn } from '@/lib/utils';
-
-type CustomCarouselProps<T> = {
-   data: T[];
-   renderItem: (item: T) => React.ReactNode;
-   rows?: 1 | 2;
-   className?: string;
-   cols?: number;
-   smallCols?: number;
-   mediumCols?: number;
-   largeCols?: number;
-};
 
 const SingleRowCarousel = <T,>({
    data,
@@ -85,15 +72,30 @@ const DoubleRowCarousel = <T,>({
    </CarouselContent>
 );
 
+type CustomCarouselProps<T> = {
+   data: T[];
+   renderItem: (item: T) => React.ReactNode;
+   rows?: 1 | 2;
+   cols?: number;
+   smallCols?: number;
+   mediumCols?: number;
+   largeCols?: number;
+   className?: string;
+   indicatorWrapperClassName?: string;
+   navigationClassName?: string;
+};
+
 export default function CustomCarousel<T>({
    data,
    renderItem,
    rows = 1,
-   className,
    cols = 1,
    smallCols = 2,
    mediumCols = 3,
    largeCols = 4,
+   className,
+   indicatorWrapperClassName,
+   navigationClassName,
 }: CustomCarouselProps<T>) {
    const windowSize = useWindow();
    const isSmall = windowSize === 'small';
@@ -121,18 +123,19 @@ export default function CustomCarousel<T>({
             />
          )}
 
-         <NavigationButtons />
-         <CarouselIndicator className="sm:hidden" />
+         <NavigationButtons className={navigationClassName} />
+         <CarouselIndicator className={indicatorWrapperClassName} />
       </Carousel>
    );
 }
 
-const NavigationButtons = () => {
+const NavigationButtons = ({ className }: { className?: string }) => {
    return (
       <div
          className={cn(
             'absolute bottom-0 right-0 flex translate-y-2/3 gap-2 p-2',
-            'sm:top-0 sm:h-fit sm:-translate-y-full'
+            'sm:top-0 sm:h-fit sm:-translate-y-full',
+            className
          )}
       >
          <CarouselPrevious
