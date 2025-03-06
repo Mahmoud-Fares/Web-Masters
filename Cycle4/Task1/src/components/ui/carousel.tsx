@@ -48,6 +48,7 @@ const CarouselIndicator: React.FC<{
 }> = ({ className, indicatorClassName, activeIndicatorClassName }) => {
    const { api } = useCarousel();
    const [currentIndex, setCurrentIndex] = React.useState(0);
+   const [_windowSize, setWindowSize] = React.useState(window.innerWidth);
 
    React.useEffect(() => {
       const updateIndex = () => {
@@ -67,6 +68,30 @@ const CarouselIndicator: React.FC<{
          }
       };
    }, [api]);
+
+   // Debounce function to prevent multiple resize events from being triggered
+   // for better performance
+   const debounce = (func: Function, delay: number) => {
+      let timeoutId: NodeJS.Timeout;
+      return (...args: any[]) => {
+         if (timeoutId) {
+            clearTimeout(timeoutId);
+         }
+         timeoutId = setTimeout(() => {
+            func(...args);
+         }, delay);
+      };
+   };
+
+   // this is used to update the number of indicators when the window is resized
+   React.useEffect(() => {
+      const handleResize = debounce(() => {
+         setWindowSize(window.innerWidth);
+      }, 100);
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+   }, []);
 
    const handleIndicatorClick = (index: number) => {
       api?.scrollTo(index);
@@ -249,7 +274,8 @@ const CarouselPrevious = React.forwardRef<
    HTMLButtonElement,
    React.ComponentProps<typeof Button>
 >(({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
-   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+   const { orientation, scrollPrev, canScrollPrev, api } = useCarousel();
+   const slidesCount = api?.scrollSnapList().length || 0;
 
    return (
       <Button
@@ -261,7 +287,9 @@ const CarouselPrevious = React.forwardRef<
             orientation === 'horizontal'
                ? '-left-12 top-1/2 -translate-y-1/2'
                : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
-            className
+            className,
+            // hide the previous button if there is only one slide
+            slidesCount === 1 && 'hidden'
          )}
          disabled={!canScrollPrev}
          onClick={scrollPrev}
@@ -278,7 +306,8 @@ const CarouselNext = React.forwardRef<
    HTMLButtonElement,
    React.ComponentProps<typeof Button>
 >(({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
-   const { orientation, scrollNext, canScrollNext } = useCarousel();
+   const { orientation, scrollNext, canScrollNext, api } = useCarousel();
+   const slidesCount = api?.scrollSnapList().length || 0;
 
    return (
       <Button
@@ -290,7 +319,9 @@ const CarouselNext = React.forwardRef<
             orientation === 'horizontal'
                ? '-right-12 top-1/2 -translate-y-1/2'
                : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
-            className
+            className,
+            // hide the next button if there is only one slide
+            slidesCount === 1 && 'hidden'
          )}
          disabled={!canScrollNext}
          onClick={scrollNext}
