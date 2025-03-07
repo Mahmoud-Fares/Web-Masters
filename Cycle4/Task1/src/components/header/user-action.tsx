@@ -43,7 +43,7 @@ export default function UserActions() {
 
    const renderAction = (action: Action) =>
       action.to === '/account' ? (
-         <UserMenu />
+         <UserMenu key={action.to} />
       ) : (
          <NavLink
             to={action.to}

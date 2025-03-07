@@ -4,6 +4,7 @@ import Container from '@/components/container';
 import CustomCarousel from '@/components/home/custom-carousel';
 import ProductCard from '@/components/product/product-card';
 import SectionTitle from '@/components/section-header';
+import { FourDaysTimer } from '@/components/timer/four-days-timer';
 import { Button } from '@/components/ui/button';
 import { PRODUCTS } from '@/lib/mock-data';
 
@@ -13,7 +14,7 @@ export default function FlashSalesSection() {
    return (
       <section className="pt-section">
          <Container className="border-b py-section">
-            <SectionTitle text="Today's">Flash Sales</SectionTitle>
+            <SectionHeader />
 
             <CustomCarousel
                data={[...PRODUCTS, ...PRODUCTS]}
@@ -31,3 +32,13 @@ export default function FlashSalesSection() {
       </section>
    );
 }
+
+const SectionHeader = () => {
+   return (
+      <div className="flex flex-wrap items-end gap-6 sm:gap-section">
+         <SectionTitle text="Today's">Flash Sales</SectionTitle>
+
+         <FourDaysTimer />
+      </div>
+   );
+};

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { LucideProps } from 'lucide-react';
 
 import {
@@ -35,10 +37,10 @@ export default function RenderMenuGroups({ groups }: { groups: MenuItem[][] }) {
    return (
       <>
          {groups.map((group, index) => (
-            <>
+            <React.Fragment key={`group-${index}`}>
                <MenuGroup items={group} />
                {index < groups.length - 1 && <DropdownMenuSeparator />}
-            </>
+            </React.Fragment>
          ))}
       </>
    );
