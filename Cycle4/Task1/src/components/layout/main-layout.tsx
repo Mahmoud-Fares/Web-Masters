@@ -5,6 +5,7 @@ import Footer from '@/components/layout/footer';
 import Header from '@/components/layout/header';
 
 import Container from '../container';
+import GoToTop from '../go-to-top';
 
 export default function MainLayout({
    children,
@@ -27,6 +28,8 @@ export default function MainLayout({
 
             <Footer />
          </div>
+
+         <GoToTop />
       </>
    );
 }

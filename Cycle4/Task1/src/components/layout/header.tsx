@@ -7,22 +7,24 @@ import { HeaderNavbar } from '@/components/navbar';
 
 export default function Header() {
    return (
-      <header>
+      <>
          <AnnouncementBar />
 
-         <div className="border-b">
-            <Container className="py-4">
-               <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-between sm:gap-8">
-                  <Logo />
+         <header className="sticky top-0 z-50 bg-white/50 backdrop-blur-xl">
+            <div className="border-b">
+               <Container className="py-4">
+                  <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-between sm:gap-8">
+                     <Logo />
 
-                  <HeaderNavbar />
+                     <HeaderNavbar />
 
-                  <SearchBar />
+                     <SearchBar />
 
-                  <UserActions />
-               </div>
-            </Container>
-         </div>
-      </header>
+                     <UserActions />
+                  </div>
+               </Container>
+            </div>
+         </header>
+      </>
    );
 }
