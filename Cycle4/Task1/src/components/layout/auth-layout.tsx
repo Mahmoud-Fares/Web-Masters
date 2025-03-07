@@ -2,7 +2,10 @@ import { useEffect } from 'react';
 
 import { Outlet, useNavigate } from 'react-router-dom';
 
+import { cn } from '@/lib/utils';
 import { useUserStore } from '@/stores/user-store';
+
+import MainLayout from './main-layout';
 
 export function AuthLayout() {
    const currentUser = useUserStore((state) => state.currentUser);
@@ -13,21 +16,33 @@ export function AuthLayout() {
    }, [currentUser, navigate]);
 
    return (
-      <div className="flex min-h-screen py-section">
-         {/* Left side - Image */}
-         <div className="hidden w-1/2 lg:block">
-            <img
-               src="/images/auth-image.png"
-               alt="Shopping cart with phone"
-               className="block h-full rounded"
-            />
-         </div>
+      <MainLayout>
+         <div className="mb-section flex flex-1 py-section xl:gap-section">
+            <AuthImage className="hidden basis-1/2 lg:flex" />
 
-         {/* Right side - Form */}
-         <div className="flex w-full flex-col justify-center p-8 lg:w-1/2">
-            <div className="mx-auto w-full max-w-md xl:max-w-lg">
-               <Outlet />
-            </div>
+            <AuthFormWrapper className="flex w-full flex-col items-center justify-center lg:basis-1/2 xl:items-start" />
+         </div>
+      </MainLayout>
+   );
+}
+
+function AuthImage({ className }: { className?: string }) {
+   return (
+      <figure className={cn(className)}>
+         <img
+            src="/images/auth-image.png"
+            alt="Shopping cart with phone"
+            className="block h-full w-full rounded-r"
+         />
+      </figure>
+   );
+}
+
+function AuthFormWrapper({ className }: { className?: string }) {
+   return (
+      <div className={cn('p-8', className)}>
+         <div className="w-full max-w-md xl:max-w-screen-lg">
+            <Outlet />
          </div>
       </div>
    );

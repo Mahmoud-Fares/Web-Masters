@@ -9,9 +9,13 @@ type CustomBreadcrumbProps = {
    className?: string;
 };
 
+const noBreadcrumbPaths = ['/', '/login', '/signup'];
+
 export default function CustomBreadcrumb({ className }: CustomBreadcrumbProps) {
    const location = useLocation();
    const pathSegments = location.pathname.split('/').filter(Boolean);
+
+   if (noBreadcrumbPaths.includes(location.pathname)) return null;
 
    // create breadcrumb segments with home at the beginning
    const segments = [
@@ -22,15 +26,11 @@ export default function CustomBreadcrumb({ className }: CustomBreadcrumbProps) {
       })),
    ];
 
-   // display segments without home if current path is root
-   const displaySegments =
-      location.pathname === '/' ? segments.slice(1) : segments;
-
    return (
-      <div className={cn(displaySegments.length > 1 && className)}>
+      <div className={cn(segments.length > 1 && className)}>
          <Breadcrumb>
             <BreadcrumbList>
-               <RenderBreadcrumb displaySegments={displaySegments} />
+               <RenderBreadcrumb displaySegments={segments} />
             </BreadcrumbList>
          </Breadcrumb>
       </div>
