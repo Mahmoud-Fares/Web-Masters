@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react';
+import { lazy } from 'react';
 
 import { createBrowserRouter } from 'react-router-dom';
 
@@ -6,7 +6,6 @@ import ErrorBoundary from '@/components/error-boundary';
 import { AuthLayout } from '@/components/layout/auth-layout';
 import MainLayout from '@/components/layout/main-layout';
 import ProtectedLayout from '@/components/layout/protected-layout';
-import Loader from '@/components/loader';
 
 const AboutPage = lazy(() => import('@/pages/about'));
 const AccountPage = lazy(() => import('@/pages/account'));
@@ -23,11 +22,7 @@ const WishlistPage = lazy(() => import('@/pages/wishlist'));
 export const router = createBrowserRouter([
    {
       path: '/',
-      element: (
-         <Suspense fallback={<Loader />}>
-            <MainLayout />
-         </Suspense>
-      ),
+      element: <MainLayout />,
       errorElement: <ErrorBoundary />,
       children: [
          {
@@ -55,11 +50,7 @@ export const router = createBrowserRouter([
    // Protected routes group
    {
       path: '/',
-      element: (
-         <Suspense fallback={<Loader />}>
-            <ProtectedLayout />
-         </Suspense>
-      ),
+      element: <ProtectedLayout />,
       errorElement: <ErrorBoundary />,
       children: [
          {
@@ -83,11 +74,7 @@ export const router = createBrowserRouter([
    // Auth routes group
    {
       path: '/',
-      element: (
-         <Suspense fallback={<Loader />}>
-            <AuthLayout />
-         </Suspense>
-      ),
+      element: <AuthLayout />,
       errorElement: <ErrorBoundary />,
       children: [
          {
