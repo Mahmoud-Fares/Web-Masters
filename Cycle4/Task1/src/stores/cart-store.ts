@@ -19,12 +19,11 @@ type CartState = {
    removeItem: (productId: number) => void;
    updateQuantity: (productId: number, newQuantity: number) => void;
    clearCart: () => void;
-   getSubtotal: () => number;
 };
 
 export const useCartStore = create<CartState>()(
    persist(
-      (set, get) => ({
+      (set) => ({
          items: [],
 
          addItem: ({
@@ -109,14 +108,6 @@ export const useCartStore = create<CartState>()(
             }),
 
          clearCart: () => set({ items: [] }),
-
-         getSubtotal: () => {
-            const state = get();
-            return state.items.reduce(
-               (total, item) => total + item.price * item.quantity,
-               0
-            );
-         },
       }),
       {
          name: 'cart-storage',

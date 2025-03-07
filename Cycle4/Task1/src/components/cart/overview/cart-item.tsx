@@ -13,7 +13,7 @@ export function CartItemRow({ item }: { item: CartItem }) {
          <CartQuantitySelector item={item} />
 
          <div className="text-center md:text-right">
-            ${item.price * item.quantity}
+            ${(item.price * item.quantity).toFixed(2)}
          </div>
       </div>
    );

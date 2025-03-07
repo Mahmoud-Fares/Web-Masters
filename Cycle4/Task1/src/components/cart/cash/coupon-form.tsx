@@ -1,8 +1,11 @@
+'use no memo';
+
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
+import { useCartStore } from '@/stores/cart-store';
 import { useCheckoutStore } from '@/stores/checkout-store';
 
 type CouponFormProps = {
@@ -13,6 +16,10 @@ export function CouponForm({ className }: CouponFormProps) {
    const [couponCode, setCouponCode] = useState('');
    const { applyCoupon, appliedCoupon, removeCoupon, getDiscount } =
       useCheckoutStore();
+
+   // is used only for subscribing for any changes in cart items
+   const items = useCartStore((state) => state.items);
+   items;
 
    const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
@@ -43,7 +50,7 @@ export function CouponForm({ className }: CouponFormProps) {
             >
                <Input
                   name="coupon"
-                  placeholder="Enter Coupon Code"
+                  placeholder="Type ( SAVE10 | SAVE20 | FIXED500 )"
                   value={couponCode}
                   onChange={(e) => setCouponCode(e.target.value)}
                   className="h-auto max-w-xs rounded border-border !bg-background py-2"

@@ -20,6 +20,9 @@ type CheckoutState = {
    applyCoupon: (code: string) => void;
    removeCoupon: () => void;
    markCouponAsUsed: () => void;
+
+   // Pricing actions
+   getSubtotal: () => number;
    getDiscount: () => number;
    getTotal: () => number;
 
@@ -44,18 +47,29 @@ export const useCheckoutStore = create<CheckoutState>()(
          availableCoupons: VALID_COUPONS,
 
          applyCoupon: (code: string) => {
-            const state = get();
-            const subtotal = useCartStore.getState().getSubtotal();
-            const couponIndex = state.availableCoupons.findIndex(
+            const subtotal = get().getSubtotal();
+            const couponIndex = get().availableCoupons.findIndex(
                (c) => c.code === code && c.isActive
             );
+
+            const emptyMsgs = [
+               'Try SAVE10 for 10% off!',
+               'Try SAVE20 for 20% off!',
+               'Try FIXED500 for $500 off!',
+            ];
+            if (!code) {
+               toast.error(
+                  emptyMsgs[Math.floor(Math.random() * emptyMsgs.length)]
+               );
+               return;
+            }
 
             if (couponIndex === -1) {
                toast.error('Invalid or expired coupon code!');
                return;
             }
 
-            const coupon = state.availableCoupons[couponIndex];
+            const coupon = get().availableCoupons[couponIndex];
 
             if (coupon.minPurchase && subtotal < coupon.minPurchase) {
                toast.error(
@@ -90,9 +104,18 @@ export const useCheckoutStore = create<CheckoutState>()(
             }
          },
 
+         getSubtotal: () => {
+            const items = useCartStore.getState().items;
+
+            return items.reduce(
+               (total, item) => total + item.price * item.quantity,
+               0
+            );
+         },
+
          getDiscount: () => {
             const state = get();
-            const subtotal = useCartStore.getState().getSubtotal();
+            const subtotal = state.getSubtotal();
 
             if (!state.appliedCoupon) return 0;
 
@@ -108,7 +131,7 @@ export const useCheckoutStore = create<CheckoutState>()(
          },
 
          getTotal: () => {
-            const subtotal = useCartStore.getState().getSubtotal();
+            const subtotal = get().getSubtotal();
             const discount = get().getDiscount();
             return subtotal - discount;
          },

@@ -1,11 +1,15 @@
+'use no memo';
+
 import { cn } from '@/lib/utils';
 import { useCartStore } from '@/stores/cart-store';
 import { useCheckoutStore } from '@/stores/checkout-store';
 
 export default function PricingSummary({ className }: { className?: string }) {
    // todo: add shipping logic
-   const { getSubtotal } = useCartStore();
-   const { appliedCoupon } = useCheckoutStore();
+   const { appliedCoupon, getSubtotal } = useCheckoutStore();
+   // is used only for subscribing for any changes in cart items
+   const items = useCartStore((state) => state.items);
+   items;
 
    const PricingSummaryItems = [
       {
@@ -41,8 +45,7 @@ export default function PricingSummary({ className }: { className?: string }) {
 }
 
 function PriceDisplay() {
-   const { getSubtotal } = useCartStore();
-   const { appliedCoupon, getTotal } = useCheckoutStore();
+   const { appliedCoupon, getTotal, getSubtotal } = useCheckoutStore();
    const subtotal = getSubtotal();
    const total = getTotal();
 
@@ -51,7 +54,7 @@ function PriceDisplay() {
          {appliedCoupon ? (
             <>
                <span className="pr-2 font-medium text-primary">
-                  ${total.toFixed(2)}
+                  ${Math.max(total, 0).toFixed(2)}
                </span>
 
                <span className="text-muted-foreground line-through">

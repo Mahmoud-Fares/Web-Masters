@@ -28,7 +28,7 @@ export default function MainLayout({
             <main className="flex flex-1 flex-col">
                <Suspense
                   fallback={
-                     <Loader className="flex flex-1 items-center justify-center" />
+                     <Loader className="flex min-h-[70vh] flex-1 items-center justify-center" />
                   }
                >
                   {children ?? <Outlet />}
