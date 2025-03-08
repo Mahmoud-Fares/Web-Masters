@@ -24,6 +24,7 @@ dist-ssr
 *.sln
 *.sw?
 
+.vercel
+!.env.example
 # .pnpm-store vm fix (for my sandbox)
 .npmrc
-.vercel
