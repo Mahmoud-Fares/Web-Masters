@@ -53,10 +53,7 @@ export default function CategoriesSection() {
                   />
                )}
                className="py-6"
-               cols={2}
-               smallCols={3}
-               mediumCols={5}
-               largeCols={6}
+               itemClassName="max-w-fit"
             />
          </Container>
       </section>

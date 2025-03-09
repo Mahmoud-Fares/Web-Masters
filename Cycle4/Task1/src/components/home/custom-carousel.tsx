@@ -12,18 +12,16 @@ import { cn } from '@/lib/utils';
 const SingleRowCarousel = <T,>({
    data,
    renderItem,
-   cols,
-   smallCols,
-   mediumCols,
-   largeCols,
+   className,
 }: CustomCarouselProps<T>) => (
    <CarouselContent>
       {data.map((item, index) => (
          <CarouselItem
             key={index}
             className={cn(
-               'max-w-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4',
-               `basis-1/${cols} sm:basis-1/${smallCols} md:basis-1/${mediumCols} lg:basis-1/${largeCols}`
+               'max-w-full',
+               'sm:basis-1/2 md:basis-1/3 lg:basis-1/4',
+               className
             )}
          >
             {renderItem(item)}
@@ -35,10 +33,7 @@ const SingleRowCarousel = <T,>({
 const DoubleRowCarousel = <T,>({
    data,
    renderItem,
-   cols,
-   smallCols,
-   mediumCols,
-   largeCols,
+   className,
 }: CustomCarouselProps<T>) => (
    <CarouselContent>
       {/* the carousel Item will be two components stacking one top of the other */}
@@ -50,8 +45,9 @@ const DoubleRowCarousel = <T,>({
                <CarouselItem
                   key={slideIndex}
                   className={cn(
-                     'max-w-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4',
-                     `basis-1/${cols} sm:basis-1/${smallCols} md:basis-1/${mediumCols} lg:basis-1/${largeCols}`
+                     'max-w-full',
+                     'sm:basis-1/2 md:basis-1/3 lg:basis-1/4',
+                     className
                   )}
                >
                   <div className="grid grid-rows-2 gap-4">
@@ -76,11 +72,8 @@ type CustomCarouselProps<T> = {
    data: T[];
    renderItem: (item: T) => React.ReactNode;
    rows?: 1 | 2;
-   cols?: number;
-   smallCols?: number;
-   mediumCols?: number;
-   largeCols?: number;
    className?: string;
+   itemClassName?: string;
    indicatorWrapperClassName?: string;
    navigationClassName?: string;
 };
@@ -89,11 +82,8 @@ export default function CustomCarousel<T>({
    data,
    renderItem,
    rows = 1,
-   cols = 1,
-   smallCols = 2,
-   mediumCols = 3,
-   largeCols = 4,
    className,
+   itemClassName,
    indicatorWrapperClassName,
    navigationClassName,
 }: CustomCarouselProps<T>) {
@@ -107,24 +97,20 @@ export default function CustomCarousel<T>({
             <SingleRowCarousel
                data={data}
                renderItem={renderItem}
-               cols={cols}
-               smallCols={smallCols}
-               mediumCols={mediumCols}
-               largeCols={largeCols}
+               className={itemClassName}
             />
          ) : (
             <DoubleRowCarousel
                data={data}
                renderItem={renderItem}
-               cols={cols}
-               smallCols={smallCols}
-               mediumCols={mediumCols}
-               largeCols={largeCols}
+               className={itemClassName}
             />
          )}
 
          <NavigationButtons className={navigationClassName} />
-         <CarouselIndicator className={indicatorWrapperClassName} />
+         <CarouselIndicator
+            className={cn('sm:hidden', indicatorWrapperClassName)}
+         />
       </Carousel>
    );
 }
